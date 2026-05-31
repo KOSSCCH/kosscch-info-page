@@ -1,0 +1,161 @@
+---
+import SectionLayout from "./SectionLayout.astro";
+
+interface Props {
+	tagline?: string;
+	sectionId?: string;
+	sectionName?: string;
+	pretitle?: string;
+	titleLine?: string;
+	subtitle?: string;
+	sectionClass?: string;
+}
+
+const {
+	tagline = "Competition",
+	sectionId = "competition",
+	sectionName = "competition",
+	pretitle = "국민대학교 x 숭실대학교 x 순천향대학교 공동 주최",
+	titleLine = "KOSSCCH",
+	subtitle = "코쓱톤 경진대회",
+	sectionClass = "",
+} = Astro.props;
+
+const infoRows = [
+	{ label: "대회주제", value: "AI를 활용한 서비스 개발" },
+	{ label: "대회기간", value: "2026.4.7 ~ 4.8" },
+	{ label: "참가자격", value: "SW중심대학사업단 소속 대학생" },
+];
+---
+
+<SectionLayout
+	sectionId={sectionId}
+	sectionName={sectionName}
+	tagline={tagline}
+	title={titleLine}
+	showTitle={false}
+	sectionClass={`competition-title ${sectionClass}`.trim()}
+>
+	<div class="competition-content">
+		<h3 class="pretitle">{pretitle}</h3>
+		<h1 class="title-line">{titleLine}</h1>
+		<h2 class="subtitle">{subtitle}</h2>
+
+		<div class="divider"></div>
+
+		<div class="info-list">
+			{infoRows.map((row) => (
+				<div class="info-row">
+					<div class="info-label">{row.label}</div>
+					<div class="info-value">{row.value}</div>
+				</div>
+			))}
+		</div>
+
+		<div class="divider"></div>
+	</div>
+	
+    <slot />
+</SectionLayout>
+
+
+
+
+<style>	
+	.pretitle,
+	.title-line,
+	.subtitle {
+		margin: 0;
+		font-family: Inter, system-ui, sans-serif;
+	}
+
+	.competition-content {
+		width: min(100%, 680px);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	.divider {
+		width: 100%;
+		height: 1px;
+		background-color: #ffffff;
+		margin-top: 26px;
+	}
+
+	.info-list {
+		width: min(100%, 396px);
+		margin-inline: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin-top: 22px;
+	}
+
+	.info-row {
+		display: grid;
+		width: 100%;
+		grid-template-columns: 113px 1fr;
+		gap: 16px;
+		align-items: center;
+	}
+
+	.info-label {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 51px;
+		padding: 0 18px;
+		border-radius: 20px;
+		background: #004F9F33;
+		color: #ffffff;
+		font-size: 20px;
+		font-weight: 800;
+		line-height: 1;
+		white-space: nowrap;
+		box-sizing: border-box;
+	}
+
+	.info-value {
+		text-align: left;
+		color: #ffffff;
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 1.3;
+		white-space: nowrap;
+	}
+
+	.pretitle {
+		font-size: 25px;
+		font-weight: 800;
+		line-height: 1.2;
+		color: #ffffff;
+	}
+
+	.title-line {
+		font-size: clamp(56px, 7vw, 70px);
+		font-weight: 600;
+		line-height: 1.1;
+		color: #1566e8;
+	}
+
+	.subtitle {
+		font-size: clamp(60px, 8vw, 85px);
+		font-weight: 800;
+		line-height: 1.05;
+		color: #ffffff;
+	}
+
+	@media (max-width: 720px) {
+		.info-row {
+			grid-template-columns: 1fr;
+			gap: 8px;
+		}
+
+		.info-label {
+			width: fit-content;
+			margin: 0 auto;
+		}
+	}
+</style>

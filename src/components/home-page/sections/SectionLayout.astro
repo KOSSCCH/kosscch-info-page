@@ -1,0 +1,76 @@
+---
+interface Props {
+  sectionId: string;
+  sectionName: string | null;
+  sectionClass?: string;
+  tagline?: string;
+  title?: string;
+  showTitle?: boolean;
+}
+
+const {
+  sectionId,
+  sectionName,
+  sectionClass = "",
+} = Astro.props;
+---
+
+
+<div class="sticky-stage" data-section={sectionName}>
+  <section id={sectionId} class:list={["panel", sectionClass]}>
+      <div class="section-content">
+        <slot />
+      </div>
+  </section>
+</div>
+
+<style>
+  :root {
+    --kosscch-bg-color: #121513;
+  }
+
+  .sticky-stage {
+    position: relative;
+    min-height: 100svh;
+  }
+
+  .panel {
+    position: sticky;
+    top: 0;
+
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+
+    padding: 96px 0;
+    overflow: hidden;
+  }
+
+  .panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--kosscch-bg-color);
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+
+  :global(p) {
+    color: #666;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 720px) {
+    .panel {
+      padding: 88px 0 64px;
+    }
+  }
+</style>
