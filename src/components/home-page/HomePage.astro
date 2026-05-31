@@ -1,5 +1,4 @@
 ---
-import SiteHeader from "./sections/SiteHeader.astro";
 import HeroSection from "./sections/HeroSection.astro";
 import AboutSection from "./sections/AboutSection.astro";
 import ServiceSection from "./sections/ServiceSection.astro";
@@ -16,19 +15,10 @@ interface Props {
 }
 
 const { logo = "SSAMMU" } = Astro.props;
-
-const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Service", href: "#service" },
-  { label: "참가 안내", href: "#participation-guide" },
-  { label: "Contact", href: "#contact" },
-];
 ---
 
 <section class="home-page">
   <link rel="stylesheet" href={new URL('./sections/sections.css', import.meta.url).href} />
-  <SiteHeader {logo} navItems={navItems} />
 
   <main class="section-container">
     <CompetitionTitle />

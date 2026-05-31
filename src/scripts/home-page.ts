@@ -3,7 +3,7 @@ const createHomePageController = () => {
   const stages = Array.from(document.querySelectorAll<HTMLElement>(".sticky-stage"));
   const navLinks = Array.from(document.querySelectorAll<HTMLElement>(".nav a"));
 
-  if (!header || stages.length === 0) {
+  if (stages.length === 0) {
     return () => {};
   }
 
@@ -62,6 +62,10 @@ const createHomePageController = () => {
   };
 
   const updateHeader = () => {
+    if (!header) {
+      return;
+    }
+
     header.classList.toggle("is-stuck", window.scrollY > 8);
   };
 

@@ -23,8 +23,12 @@ const {
 	sectionName={sectionName}
 	sectionClass={`competition-info ${sectionClass}`.trim()}
 >
-
-	<h2 style="color: #ffffff; font-size: 24px; font-weight: 800; margin-bottom: 24px;">수상</h2>
+	<div class="award-content">
+		<header class="award-header">
+			<h2 class="award-title">수상</h2>
+			<p class="award-subtitle">총 12팀, 총 1200만원</p>
+			<p class="award-subtitle award-subtitle--accent">SW중심대학사업단장상 수여</p>
+		</header>
 
 
 	<div style="width:904px; height:510px; background:#004F9F33; border-radius:16px; position:relative; overflow:hidden;">
@@ -91,14 +95,51 @@ const {
 
 
 
-	
-    <slot />
+		<slot />
+</div>
 </SectionLayout>
 
 
 
 
 <style>
+	.award-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		color: #ffffff;
+	}
+
+	.award-header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+		margin-bottom: 42px;
+	}
+
+	.award-title {
+		margin: 0;
+		font-size: 48px;
+		font-weight: 800;
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+		color: #ffffff;
+	}
+
+	.award-subtitle {
+		margin: 0;
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 1.35;
+		color: #ffffff;
+	}
+
+	.award-subtitle--accent {
+		font-weight: 500;
+	}
+
 	.pretitle,
 	.title-line,
 	.subtitle {
@@ -125,5 +166,20 @@ const {
 		font-weight: 800;
 		line-height: 1.05;
 		color: #ffffff;
+	}
+
+	@media (max-width: 768px) {
+		.award-header {
+			margin-bottom: 28px;
+			gap: 6px;
+		}
+
+		.award-title {
+			font-size: 32px;
+		}
+
+		.award-subtitle {
+			font-size: 15px;
+		}
 	}
 </style>
