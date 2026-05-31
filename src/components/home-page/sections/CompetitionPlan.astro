@@ -23,9 +23,9 @@ const {
 	sectionName={sectionName}
 	sectionClass={`competition-info ${sectionClass}`.trim()}
 >
-
-	<h2 style="color: #ffffff; font-size: 24px; font-weight: 800; margin-bottom: 24px;">대회일정</h2>
-
+	<div class="competition-content">
+		<h2 class="section-title">대회일정</h2>
+		<p class="section-subtitle">주요 일정</p>
 
 	<div style="width:775px; height:316px; background:#004F9F33; border-radius:16px; position:relative; overflow:hidden;">
 		<div style="
@@ -83,24 +83,26 @@ const {
 			</div>
 		</div>
 	</div>
-	<p>* 상기 일정은 사정에 따라 변경될 수 있습니다.</p>
-	
-	
-	
-	<h2 style="color: #ffffff; font-size: 24px; font-weight: 800; margin-bottom: 24px;">본선 일정</h2>
-	
-	<div>
-		<div style="display: flex; gap: 16px; margin-top: 24px;">
-			<div style="width: 108px; height: 70px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; line-height: 70px;">본선 일시</div>
-			<div style="color: #ffffff; font-weight: 500; font-size: 20px; text-align: center; line-height: 70px;">2026.9.5(토)</div>
-		</div>
-		
-		<div style="display: flex; gap: 16px; margin-top: 24px;">
-			<div style="width: 108px; height: 70px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; line-height: 70px;">본선 장소</div>
-			<div style="color: #ffffff; font-weight: 500; font-size: 20px; text-align: center; line-height: 70px;">추후 안내 예정</div>
+		<p class="caption">* 상기 일정은 사정에 따라 변경될 수 있습니다.</p>
+
+		<div class="final-section">
+			<h2 class="final-title">본선 일정</h2>
+
+			<div class="final-list">
+				<div class="final-row">
+					<div class="final-label">본선 일시</div>
+					<div class="final-value">2026.9.5(토)</div>
+				</div>
+
+				<div class="final-row">
+					<div class="final-label">본선 장소</div>
+					<div class="final-value">국민대학교 콘서트홀</div>
+				</div>
+			</div>
+
+			<p class="caption caption--final">* 본선 세부 일정은 본선 진출 팀들에 한해 추후 공지될 예정입니다.</p>
 		</div>
 	</div>
-	<p>* 본선 세부 일정은 본선 진출 팀들에 한해 추후 공지될 예정입니다.</p>
 
 
 
@@ -113,6 +115,90 @@ const {
 
 
 <style>
+	.competition-content {
+		width: min(100%, 920px);
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	.section-title {
+		margin: 0;
+		color: #ffffff;
+		font-size: 48px;
+		font-weight: 800;
+		line-height: 1.1;
+	}
+
+	.section-subtitle {
+		margin: 18px 0 20px;
+		color: rgba(255, 255, 255, 0.92);
+		font-size: 28px;
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	.caption {
+		margin: 12px 0 0;
+		color: rgba(255, 255, 255, 0.62);
+		font-size: 13px;
+		line-height: 1.5;
+		text-align: left;
+		width: min(100%, 560px);
+	}
+
+	.final-section {
+		margin-top: 52px;
+		width: min(100%, 560px);
+		text-align: center;
+	}
+
+	.final-title {
+		margin: 0;
+		color: #ffffff;
+		font-size: 28px;
+		font-weight: 800;
+		line-height: 1.2;
+	}
+
+	.final-list {
+		margin-top: 22px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.final-row {
+		display: grid;
+		grid-template-columns: 112px minmax(0, 1fr);
+		gap: 18px;
+		align-items: center;
+	}
+
+	.final-label {
+		color: #ffffff;
+		font-size: 20px;
+		font-weight: 800;
+		line-height: 1.2;
+		text-align: center;
+	}
+
+	.final-value {
+		color: #ffffff;
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 1.2;
+		text-align: center;
+	}
+
+	.caption--final {
+		width: 100%;
+		margin-top: 18px;
+		text-align: left;
+	}
+
 	.pretitle,
 	.title-line,
 	.subtitle {
@@ -139,5 +225,48 @@ const {
 		font-weight: 800;
 		line-height: 1.05;
 		color: #ffffff;
+	}
+
+	@media (max-width: 720px) {
+		.competition-content {
+			width: 100%;
+		}
+
+		.section-title {
+			font-size: 34px;
+		}
+
+		.section-subtitle {
+			font-size: 16px;
+			margin-top: 14px;
+		}
+
+		.caption {
+			width: 100%;
+			font-size: 12px;
+		}
+
+		.final-section {
+			width: 100%;
+			margin-top: 40px;
+		}
+
+		.final-title {
+			font-size: 24px;
+		}
+
+		.final-row {
+			grid-template-columns: 1fr;
+			gap: 6px;
+		}
+
+		.final-label,
+		.final-value {
+			font-size: 16px;
+		}
+
+		.caption--final {
+			text-align: center;
+		}
 	}
 </style>

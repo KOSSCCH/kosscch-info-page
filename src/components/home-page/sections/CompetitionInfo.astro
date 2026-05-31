@@ -22,6 +22,30 @@ const {
 	subtitle = "코쓱톤 경진대회",
 	sectionClass = "",
 } = Astro.props;
+
+const infoItems = [
+	{
+		label: "참가대상",
+		value: "SW중심대학사업단 소속 대학생 (전공 무관)",
+	},
+	{
+		label: "운영방식",
+		value: [
+			"공고일 기준 재학생, 휴학생, 수료생으로 구성된 1~5인의 팀",
+			"SW중심대학 소속 대학이 서로 다른 학생들로 자유롭게 팀 구성 가능",
+			"참가자는 복수의 팀에 중복하여 참가 가능 (단 예선 통과 시, 1개의 팀만 선택 필요)",
+			"단, 팀장은 대학교 재학생으로 제한",
+		],
+	},
+	{
+		label: "신청방법",
+		value: "하단 구글폼에 팀 단위로 개발계획서 제출",
+	},
+	{
+		label: "시상내역",
+		value: "총 10팀, 총 1000만원",
+	},
+];
 ---
 
 <SectionLayout
@@ -32,55 +56,168 @@ const {
 	showTitle={false}
 	sectionClass={`competition-info ${sectionClass}`.trim()}
 >
+	<div class="competition-content">
+		<h2 class="section-title">대회개요</h2>
 
-	<h2 style="color: #ffffff; font-size: 24px; font-weight: 800; margin-bottom: 24px;">대회개요</h2>
-
-
-	<div style="display: flex">
-		<div>
-			<Image style="width: 413px; height: auto;" src={competitionPoster} alt="대회 포스터" />
-		</div>
-		<div>
-			<div style="display: flex; gap: 16px; margin-top: 24px;">
-				<div style="width: 108px; height: 70px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; line-height: 70px;">참가대상</div>
-				<div style="color: #ffffff; font-weight: 500; font-size: 20px; text-align: center; line-height: 70px;">SW중심대학사업단 소속 대학생 (전공 무관)</div>
+		<div class="overview-grid">
+			<div class="poster-frame">
+				<Image class="poster" src={competitionPoster} alt="대회 포스터" />
 			</div>
 
-			<div style="display: flex; gap: 16px; margin-top: 24px;">
-				<div style="width: 108px; height: 70px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; line-height: 70px;">운영방식</div>
-				<div style="color: #ffffff; font-weight: 500; font-size: 20px;">
-					<p>공고일 기준 재학생, 휴학생, 수료생으로 구성된 1~5인의 팀</p>
-					<ul style="margin: 0;">
-						<li>SW중심대학 소속 대학이 서로 다른 학생들로 자유롭게 팀 구성 가능</li>
-						<li>참가자는 복수의 팀에 중복하여 참가 가능 (단 예선 통과 시, 1개의 팀만 선택 필요)</li>
-						<li>단, 팀장은 대학교 재학생으로 제한</li>
-					</ul>
-				</div>
-			</div>
-
-
-			<div style="display: flex; gap: 16px; margin-top: 24px;">
-				<div style="width: 108px; height: 70px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; line-height: 70px;">신청방법</div>
-				<div style="color: #ffffff; font-weight: 500; font-size: 20px; text-align: center; line-height: 70px;">하단 구글폼에 팀 단위로 개발계획서 제출</div>
-			</div>
-
-
-			<div style="display: flex; gap: 16px; margin-top: 24px;">
-				<div style="width: 108px; height: 70px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; line-height: 70px;">시상내역</div>
-				<div style="color: #ffffff; font-weight: 500; font-size: 20px; text-align: center; line-height: 70px;">총 10팀, 총 1000만원</div>
+			<div class="info-panel">
+				{infoItems.map((item) => (
+					<div class:list={["info-row", Array.isArray(item.value) ? "info-row--stack" : ""]}>
+						<div class="info-label">{item.label}</div>
+						<div class:list={["info-value", Array.isArray(item.value) ? "info-value--stack" : ""]}>
+							{Array.isArray(item.value) ? (
+								<>
+									<p class="info-value-intro">{item.value[0]}</p>
+									<ul class="info-list">
+										{item.value.slice(1).map((line) => <li>{line}</li>)}
+									</ul>
+								</>
+							) : (
+								item.value
+							)}
+						</div>
+					</div>
+				))}
 			</div>
 		</div>
 	</div>
 
-
-	
-    <slot />
+	<slot />
 </SectionLayout>
 
-
-
-
 <style>
+	.competition-content {
+		width: min(100%, 1120px);
+		margin: 0 auto;
+	}
+
+	.section-title {
+		margin: 0 0 48px;
+		color: #ffffff;
+		font-size: 48px;
+		font-weight: 800;
+		text-align: center;
+	}
+
+	.overview-grid {
+		display: grid;
+		grid-template-columns: 413px minmax(0, 1fr);
+		gap: 32px;
+		align-items: start;
+		justify-content: center;
+	}
+
+	.poster-frame {
+		width: 100%;
+	}
+
+	.poster {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	.info-panel {
+		display: flex;
+		flex-direction: column;
+		gap: 18px;
+		padding-top: 12px;
+	}
+
+	.info-row {
+		display: grid;
+		grid-template-columns: 108px minmax(0, 1fr);
+		gap: 12px;
+		align-items: center;
+	}
+
+	.info-row--stack {
+		align-items: start;
+	}
+
+	.info-row--stack .info-label {
+		line-height: 1.2;
+		padding-top: 4px;
+	}
+
+	.info-label {
+		color: #ffffff;
+		font-size: 20px;
+		font-weight: 800;
+		line-height: 70px;
+		white-space: nowrap;
+	}
+
+	.info-value {
+		color: #ffffff;
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 1.55;
+		text-align: left;
+		white-space: nowrap;
+	}
+
+	.info-value--stack {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		white-space: normal;
+	}
+
+	.info-value-intro {
+		margin: 0 0 2px;
+        color: #ffffff;
+		font-weight: 500;
+		line-height: 1.45;
+	}
+
+	.info-list {
+		margin: 0;
+		padding-left: 18px;
+		color: rgba(255, 255, 255, 0.58);
+		font-size: 14px;
+		line-height: 1.45;
+	}
+
+	.info-list li {
+		margin: 0;
+	}
+
+	@media (max-width: 900px) {
+		.overview-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.info-panel {
+			padding-top: 0;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.info-row {
+			grid-template-columns: 1fr;
+			gap: 8px;
+		}
+
+		.info-label,
+		.info-value {
+			text-align: center;
+		}
+
+		.info-value {
+			white-space: normal;
+		}
+
+		.info-list {
+			padding-left: 20px;
+			text-align: left;
+		}
+	}
+
 	.pretitle,
 	.title-line,
 	.subtitle {
