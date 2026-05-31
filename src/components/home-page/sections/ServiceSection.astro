@@ -1,0 +1,62 @@
+---
+import SectionLayout from "./SectionLayout.astro";
+
+interface Props {
+  tagline?: string;
+  title?: string;
+  featureTitle?: string;
+  featureDescription?: string;
+}
+
+const {
+  tagline = "Service",
+  title = "제공\n기능",
+  featureTitle = "Sticky Section + One Scroll Move",
+  featureDescription = "사용자가 휠을 한 번 움직이거나 터치 스크롤을 하면 현재 섹션에서 다음 또는 이전 섹션으로 바로 이동합니다.",
+} = Astro.props;
+---
+
+<SectionLayout sectionId="service" sectionName="service" tagline={tagline} title={title}>
+  <div class="large-card">
+    <h3>{featureTitle}</h3>
+    <p>{featureDescription}</p>
+  </div>
+</SectionLayout>
+
+<style>
+  :global(.service h2) {
+    max-width: 760px;
+    font-size: clamp(42px, 7vw, 76px);
+  }
+
+  h3 {
+    margin: 0 0 12px;
+    font-size: 22px;
+    letter-spacing: -0.04em;
+  }
+
+  p {
+    color: #666;
+    line-height: 1.7;
+  }
+
+  .large-card {
+    max-width: 720px;
+    margin-top: 36px;
+    padding: 28px;
+    border: 1px solid #e5e5e5;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .large-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.08);
+  }
+</style>

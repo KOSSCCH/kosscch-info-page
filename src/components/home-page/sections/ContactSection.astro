@@ -1,0 +1,247 @@
+---
+import SectionLayout from "./SectionLayout.astro";
+---
+
+<SectionLayout sectionId="contact" sectionName="contact">
+  <div class="contact-wrapper">
+    <h1 class="title">기타사항</h1>
+
+    <section class="contact-section">
+      <h2 class="section-title">문의</h2>
+
+      <div class="contact-card">
+        <div class="icon-circle">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path
+              d="M5 8.5H27V23.5H5V8.5Z"
+              stroke="#0070d9"
+              stroke-width="2.7"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.5 10L16 16.5L25.5 10"
+              stroke="#0070d9"
+              stroke-width="2.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <span>kosscch3@gmail.com</span>
+      </div>
+
+      <p class="notice">* 문의하신 내용은 확인 후 순차적으로 답변드리고 있습니다.</p>
+    </section>
+
+    <section class="download-area">
+      <div class="download-box">
+        <h2 class="download-title">대회 운영 규정</h2>
+
+        <button class="download-button">
+          <div class="icon-circle">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path
+                d="M16 5V20"
+                stroke="#0070d9"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+              <path
+                d="M10 15L16 21L22 15"
+                stroke="#0070d9"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M7 23V27H25V23"
+                stroke="#0070d9"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <span>대회 운영 규정 파일 다운로드</span>
+        </button>
+      </div>
+
+      <div class="download-box">
+        <h2 class="download-title">심사 기준</h2>
+
+        <button class="download-button">
+          <div class="icon-circle">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path
+                d="M16 5V20"
+                stroke="#0070d9"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+              <path
+                d="M10 15L16 21L22 15"
+                stroke="#0070d9"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M7 23V27H25V23"
+                stroke="#0070d9"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <span>심사 기준 파일 다운로드</span>
+        </button>
+      </div>
+    </section>
+  </div>
+</SectionLayout>
+
+
+<style>
+  /* :global(body) {
+    background: #0b1210;
+    font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+    color: #ffffff;
+  } */
+
+  .contact-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin: 0 0 20px;
+  }
+
+  .contact-section {
+    text-align: center;
+  }
+
+  .section-title {
+    margin: 0 0 18px;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .contact-card {
+    max-width: 400px;
+    height: 103px;
+    margin: 0 auto;
+    padding: 0 38px 0 22px;
+    border-radius: 18px;
+    background: #0b2536;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .icon-circle {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+    border-radius: 50%;
+    background: #003b75;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-card span {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  .notice {
+    max-width: 400px;
+    margin: 19px auto 0;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+  }
+
+  .download-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    max-width: 870px;
+    margin: 0 auto;
+  }
+
+  .download-box {
+    text-align: center;
+  }
+
+  .download-title {
+    margin: 0 0 20px;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .download-button {
+    width: 100%;
+    max-width: 400px;
+    height: 103px;
+    padding: 0 34px 0 20px;
+    border: 0;
+    border-radius: 16px;
+    background: #0b2536;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    font-family: inherit;
+    margin: 0 auto;
+  }
+
+  .download-button:hover {
+    background: #0d2d43;
+  }
+
+  svg {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .title {
+      font-size: 32px;
+    }
+
+    .section-title,
+    .download-title {
+      font-size: 24px;
+    }
+
+    .download-area {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .download-button {
+      font-size: 16px;
+    }
+  }
+</style>

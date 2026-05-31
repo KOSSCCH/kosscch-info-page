@@ -1,0 +1,87 @@
+---
+import SectionLayout from "./SectionLayout.astro";
+
+interface Feature {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  tagline?: string;
+  title?: string;
+  description?: string;
+  features?: Feature[];
+}
+
+
+---
+
+<SectionLayout sectionId="about" sectionName="about">
+
+  <h3>
+    코쓱톤이 무엇인가요?
+  </h3>
+
+  <p class="description">
+코쓱톤은 국민대학교 소프트웨어융합대학 동아리 KOSS와 숭실대학교 중앙동아리 SSCC, 순천향대학교(SCHU)가 공동 주최하는 해커톤입니다.
+<br /><br />
+AI가 짜준 코드에 머쓱해하던 것을 지나, 이제는 AI를 완벽한 파트너로 삼아 프로젝트를 설계하고 구현하고 증명합니다. 코쓱톤은 아이디어를 끝까지 결과물로 완성하며 개발자의 시야를 확장하는 End-to-End 해커톤입니다.
+막연한 아이디어가 아닌, 정교한 설계로 빈 껍데기 없는 결과물을 완성하며 성장의 즐거움을 나눕니다.
+머쓱함은 여기까지, 이제는 자신감으로 결과를 증명할 차례입니다.
+  </p>  
+</SectionLayout>
+
+<style>
+  :global(.about h2) {
+    max-width: 760px;
+    font-size: clamp(42px, 7vw, 76px);
+  }
+
+  h3 {
+    margin: 0 0 12px;
+    font-size: 22px;
+    letter-spacing: -0.04em;
+    color: white;
+  }
+
+  p {
+    color: #666;
+    line-height: 1.7;
+  }
+
+  .description {
+    max-width: 660px;
+    font-size: 18px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 36px;
+  }
+
+  .card {
+    padding: 28px;
+    border: 1px solid #e5e5e5;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.08);
+  }
+
+  @media (max-width: 720px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

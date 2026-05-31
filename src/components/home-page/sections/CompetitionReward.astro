@@ -1,0 +1,129 @@
+---
+import SectionLayout from "./SectionLayout.astro";
+
+interface Props {
+	tagline?: string;
+	sectionId?: string;
+	sectionName?: string;
+	pretitle?: string;
+	titleLine?: string;
+	subtitle?: string;
+	sectionClass?: string;
+}
+
+const {
+	sectionId = "competition",
+	sectionName = "competition",
+	sectionClass = "",
+} = Astro.props;
+---
+
+<SectionLayout
+	sectionId={sectionId}
+	sectionName={sectionName}
+	sectionClass={`competition-info ${sectionClass}`.trim()}
+>
+
+	<h2 style="color: #ffffff; font-size: 24px; font-weight: 800; margin-bottom: 24px;">수상</h2>
+
+
+	<div style="width:904px; height:510px; background:#004F9F33; border-radius:16px; position:relative; overflow:hidden;">
+		<div style="
+			position:absolute;
+			left:48px;
+			top:51px;
+			width:796px;
+			height:425px;
+			display:grid;
+			grid-template-columns:398px 398px;
+			grid-template-rows: 70px 70px 70px 70px 70px 70px;
+			color:#fff;
+			font-size:16px;
+			font-weight:700;
+			line-height:1.45;
+			text-align:center;
+		">
+			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			구분
+			</div>
+			<div style="display:flex; align-items:center; justify-content:center; rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			상금
+			</div>
+
+			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			대상
+			</div>
+			<div style="display:flex; align-items:center; justify-content:center; rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			각 200만원(3팀)
+			</div>
+
+			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			최우수상
+			</div>
+			<div style="display:flex; align-items:center; justify-content:center; rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			각 100만원(3팀)
+			</div>
+
+			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			우수상
+			</div>
+			<div style="display:flex; align-items:center; justify-content:center; rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			각 50만원(6팀)
+			</div>
+
+			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			
+			</div>
+			<div style="display:flex; align-items:center; justify-content:center; rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			
+			</div>
+			
+			<div style="display:flex; background:#004F9F33; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65);">
+			합계
+			</div>
+			<div style="display:flex; background:#004F9F33; align-items:center; justify-content:center; rgba(255,255,255,0.65);">
+			1,200만원
+			</div>
+
+
+		</div>
+	</div>
+
+
+
+	
+    <slot />
+</SectionLayout>
+
+
+
+
+<style>
+	.pretitle,
+	.title-line,
+	.subtitle {
+		margin: 0;
+		font-family: Inter, system-ui, sans-serif;
+	}
+
+	.pretitle {
+		font-size: 25px;
+		font-weight: 800;
+		line-height: 1.2;
+		color: #ffffff;
+	}
+
+	.title-line {
+		font-size: clamp(56px, 7vw, 70px);
+		font-weight: 600;
+		line-height: 1.1;
+		color: #1566e8;
+	}
+
+	.subtitle {
+		font-size: clamp(60px, 8vw, 85px);
+		font-weight: 800;
+		line-height: 1.05;
+		color: #ffffff;
+	}
+</style>

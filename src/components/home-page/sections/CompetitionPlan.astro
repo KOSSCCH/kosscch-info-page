@@ -1,0 +1,143 @@
+---
+import SectionLayout from "./SectionLayout.astro";
+
+interface Props {
+	tagline?: string;
+	sectionId?: string;
+	sectionName?: string;
+	pretitle?: string;
+	titleLine?: string;
+	subtitle?: string;
+	sectionClass?: string;
+}
+
+const {
+	sectionId = "competition",
+	sectionName = "competition",
+	sectionClass = "",
+} = Astro.props;
+---
+
+<SectionLayout
+	sectionId={sectionId}
+	sectionName={sectionName}
+	sectionClass={`competition-info ${sectionClass}`.trim()}
+>
+
+	<h2 style="color: #ffffff; font-size: 24px; font-weight: 800; margin-bottom: 24px;">대회일정</h2>
+
+
+	<div style="width:775px; height:316px; background:#004F9F33; border-radius:16px; position:relative; overflow:hidden;">
+		<div style="
+			position:absolute;
+			left:48px;
+			top:51px;
+			width:668px;
+			height:213px;
+			display:grid;
+			grid-template-columns:193px 117px 197px 161px;
+			grid-template-rows:70px 70px 73px;
+			color:#fff;
+			font-size:16px;
+			font-weight:700;
+			line-height:1.45;
+			text-align:center;
+		">
+			<div style="display:flex; background-color:#004F9F33; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			6.1(월)~6.26(월)
+			</div>
+			<div style="display:flex; background-color:#004F9F33; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			7.5(월)
+			</div>
+			<div style="display:flex; background-color:#004F9F33; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			7.6(월)~8.9(월)
+			</div>
+			<div style="display:flex; background-color:#004F9F33; align-items:center; justify-content:center; border-bottom:1px solid rgba(255,255,255,0.65);">
+			9.5(토)
+			</div>
+
+			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			참가 접수
+			</div>
+			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			예선 심사<br>및 발표
+			</div>
+			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
+			개발
+			</div>
+			<div style="display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(255,255,255,0.65);">
+			본선 및 시상
+			</div>
+
+			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65);">
+			기획안 및 개발 로드맵<br>보고서 제출
+			</div>
+			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65);">
+			20개팀 선발
+			</div>
+			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65);">
+			팀별 프로젝트 구현<br>및 멘토링 진행
+			</div>
+			<div style="display:flex; align-items:center; justify-content:center;">
+			발표 심사,<br>전시 및 시상
+			</div>
+		</div>
+	</div>
+	<p>* 상기 일정은 사정에 따라 변경될 수 있습니다.</p>
+	
+	
+	
+	<h2 style="color: #ffffff; font-size: 24px; font-weight: 800; margin-bottom: 24px;">본선 일정</h2>
+	
+	<div>
+		<div style="display: flex; gap: 16px; margin-top: 24px;">
+			<div style="width: 108px; height: 70px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; line-height: 70px;">본선 일시</div>
+			<div style="color: #ffffff; font-weight: 500; font-size: 20px; text-align: center; line-height: 70px;">2026.9.5(토)</div>
+		</div>
+		
+		<div style="display: flex; gap: 16px; margin-top: 24px;">
+			<div style="width: 108px; height: 70px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; line-height: 70px;">본선 장소</div>
+			<div style="color: #ffffff; font-weight: 500; font-size: 20px; text-align: center; line-height: 70px;">추후 안내 예정</div>
+		</div>
+	</div>
+	<p>* 본선 세부 일정은 본선 진출 팀들에 한해 추후 공지될 예정입니다.</p>
+
+
+
+
+	
+    <slot />
+</SectionLayout>
+
+
+
+
+<style>
+	.pretitle,
+	.title-line,
+	.subtitle {
+		margin: 0;
+		font-family: Inter, system-ui, sans-serif;
+	}
+
+	.pretitle {
+		font-size: 25px;
+		font-weight: 800;
+		line-height: 1.2;
+		color: #ffffff;
+	}
+
+	.title-line {
+		font-size: clamp(56px, 7vw, 70px);
+		font-weight: 600;
+		line-height: 1.1;
+		color: #1566e8;
+	}
+
+	.subtitle {
+		font-size: clamp(60px, 8vw, 85px);
+		font-weight: 800;
+		line-height: 1.05;
+		color: #ffffff;
+	}
+</style>

@@ -1,0 +1,101 @@
+---
+// Props for navigation items
+interface Props {
+  logo?: string;
+  navItems?: Array<{ label: string; href: string }>;
+}
+
+const { logo = "SSAMMU", navItems = [] } = Astro.props;
+---
+
+<header class="site-header" id="siteHeader">
+  <a class="logo" href="#home" data-target="home">{logo}</a>
+
+  {
+    navItems.length > 0 && (
+      <nav class="nav">
+        {navItems.map((item) => (
+          <a href={item.href} data-target={item.href.slice(1)}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    )
+  }
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 32px;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+
+    transition:
+      padding 0.25s ease,
+      background 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease,
+      backdrop-filter 0.25s ease;
+  }
+
+  .site-header.is-stuck {
+    padding: 14px 32px;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(16px);
+    border-bottom-color: #e5e5e5;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .logo {
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  .nav {
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav a {
+    color: #666;
+    font-size: 14px;
+
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .nav a:hover,
+  .nav a.is-active {
+    color: #2563eb;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 720px) {
+    .site-header {
+      padding: 16px 20px;
+    }
+
+    .site-header.is-stuck {
+      padding: 12px 20px;
+    }
+
+    .nav {
+      gap: 12px;
+    }
+
+    .nav a {
+      font-size: 13px;
+    }
+  }
+</style>

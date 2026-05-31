@@ -1,0 +1,111 @@
+---
+import { Image } from 'astro:assets';
+import competitionPoster from '../../../assets/temp-poster.png';
+import SectionLayout from "./SectionLayout.astro";
+
+interface Props {
+	tagline?: string;
+	sectionId?: string;
+	sectionName?: string;
+	pretitle?: string;
+	titleLine?: string;
+	subtitle?: string;
+	sectionClass?: string;
+}
+
+const {
+	tagline = "Competition",
+	sectionId = "competition",
+	sectionName = "competition",
+	pretitle = "국민대학교 x 숭실대학교 x 순천향대학교 공동 주최",
+	titleLine = "KOSSCCH",
+	subtitle = "코쓱톤 경진대회",
+	sectionClass = "",
+} = Astro.props;
+---
+
+<SectionLayout
+	sectionId={sectionId}
+	sectionName={sectionName}
+	tagline={tagline}
+	title={titleLine}
+	showTitle={false}
+	sectionClass={`competition-info ${sectionClass}`.trim()}
+>
+
+	<h2 style="color: #ffffff; font-size: 24px; font-weight: 800; margin-bottom: 24px;">대회개요</h2>
+
+
+	<div style="display: flex">
+		<div>
+			<Image style="width: 413px; height: auto;" src={competitionPoster} alt="대회 포스터" />
+		</div>
+		<div>
+			<div style="display: flex; gap: 16px; margin-top: 24px;">
+				<div style="width: 108px; height: 70px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; line-height: 70px;">참가대상</div>
+				<div style="color: #ffffff; font-weight: 500; font-size: 20px; text-align: center; line-height: 70px;">SW중심대학사업단 소속 대학생 (전공 무관)</div>
+			</div>
+
+			<div style="display: flex; gap: 16px; margin-top: 24px;">
+				<div style="width: 108px; height: 70px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; line-height: 70px;">운영방식</div>
+				<div style="color: #ffffff; font-weight: 500; font-size: 20px;">
+					<p>공고일 기준 재학생, 휴학생, 수료생으로 구성된 1~5인의 팀</p>
+					<ul style="margin: 0;">
+						<li>SW중심대학 소속 대학이 서로 다른 학생들로 자유롭게 팀 구성 가능</li>
+						<li>참가자는 복수의 팀에 중복하여 참가 가능 (단 예선 통과 시, 1개의 팀만 선택 필요)</li>
+						<li>단, 팀장은 대학교 재학생으로 제한</li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div style="display: flex; gap: 16px; margin-top: 24px;">
+				<div style="width: 108px; height: 70px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; line-height: 70px;">신청방법</div>
+				<div style="color: #ffffff; font-weight: 500; font-size: 20px; text-align: center; line-height: 70px;">하단 구글폼에 팀 단위로 개발계획서 제출</div>
+			</div>
+
+
+			<div style="display: flex; gap: 16px; margin-top: 24px;">
+				<div style="width: 108px; height: 70px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; line-height: 70px;">시상내역</div>
+				<div style="color: #ffffff; font-weight: 500; font-size: 20px; text-align: center; line-height: 70px;">총 10팀, 총 1000만원</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+    <slot />
+</SectionLayout>
+
+
+
+
+<style>
+	.pretitle,
+	.title-line,
+	.subtitle {
+		margin: 0;
+		font-family: Inter, system-ui, sans-serif;
+	}
+
+	.pretitle {
+		font-size: 25px;
+		font-weight: 800;
+		line-height: 1.2;
+		color: #ffffff;
+	}
+
+	.title-line {
+		font-size: clamp(56px, 7vw, 70px);
+		font-weight: 600;
+		line-height: 1.1;
+		color: #1566e8;
+	}
+
+	.subtitle {
+		font-size: clamp(60px, 8vw, 85px);
+		font-weight: 800;
+		line-height: 1.05;
+		color: #ffffff;
+	}
+</style>
