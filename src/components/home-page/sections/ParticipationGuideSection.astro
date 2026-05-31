@@ -1,0 +1,130 @@
+---
+import SectionLayout from "./SectionLayout.astro";
+---
+
+<SectionLayout sectionId="participation-guide" sectionName="participation-guide" sectionClass="participation-guide-section">
+	<div class="participation-content">
+		<h2 class="section-title">참가 안내</h2>
+		<div class="guide-list">
+			<button class="guide-button" type="button">
+				<span class="icon-circle" aria-hidden="true">
+					<svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+						<path d="M16 5V20" stroke="#0070d9" stroke-width="3" stroke-linecap="round" />
+						<path d="M10 15L16 21L22 15" stroke="#0070d9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+						<path d="M7 23V27H25V23" stroke="#0070d9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+				</span>
+				<span class="guide-button-text">대회 개발계획서 양식 다운로드</span>
+			</button>
+
+			<button class="guide-button" type="button">
+				<span class="icon-circle" aria-hidden="true">
+					<svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+						<path d="M16 5V20" stroke="#0070d9" stroke-width="3" stroke-linecap="round" />
+						<path d="M10 15L16 21L22 15" stroke="#0070d9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+						<path d="M7 23V27H25V23" stroke="#0070d9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+				</span>
+				<span class="guide-button-text">대회 참가 신청 구글폼</span>
+			</button>
+		</div>
+	</div>
+</SectionLayout>
+
+<style>
+	.participation-content {
+		width: min(100%, 920px);
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		color: #ffffff;
+	}
+
+	.section-title {
+		margin: 0;
+		font-size: 40px;
+		font-weight: 800;
+		line-height: 1.1;
+		letter-spacing: -0.04em;
+	}
+
+	.guide-list {
+		width: 100%;
+		max-width: 400px;
+		margin-top: 52px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.guide-button {
+		width: 100%;
+		max-width: 400px;
+		height: 103px;
+		padding: 0 34px 0 20px;
+		border: 0;
+		border-radius: 16px;
+		background: #0b2536;
+		color: #ffffff;
+		font: inherit;
+		font-size: 20px;
+		font-weight: 700;
+		letter-spacing: -0.4px;
+		display: flex;
+		align-items: center;
+		gap: 26px;
+		cursor: pointer;
+		margin: 0 auto;
+	}
+
+	.icon-circle {
+		width: 64px;
+		height: 64px;
+		flex: 0 0 64px;
+		border-radius: 50%;
+		background: #003b75;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.guide-button-text {
+		flex: 1;
+		text-align: center;
+		white-space: nowrap;
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	@media (max-width: 720px) {
+		.section-title {
+			font-size: 32px;
+		}
+
+		.guide-list {
+			max-width: 100%;
+			margin-top: 40px;
+			gap: 14px;
+		}
+
+		.guide-button {
+			height: 103px;
+			padding-left: 20px;
+			padding-right: 20px;
+			gap: 20px;
+		}
+
+		.guide-button-text {
+			font-size: 16px;
+		}
+
+		.icon-circle {
+			width: 64px;
+			height: 64px;
+			flex-basis: 64px;
+		}
+	}
+</style>

@@ -3,6 +3,7 @@ import SiteHeader from "./sections/SiteHeader.astro";
 import HeroSection from "./sections/HeroSection.astro";
 import AboutSection from "./sections/AboutSection.astro";
 import ServiceSection from "./sections/ServiceSection.astro";
+import ParticipationGuideSection from "./sections/ParticipationGuideSection.astro";
 import ContactSection from "./sections/ContactSection.astro";
 import homePageScriptUrl from "../../scripts/home-page.ts?url";
 import CompetitionTitle from "./sections/CompetitionTitle.astro";
@@ -20,6 +21,7 @@ const navItems = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Service", href: "#service" },
+  { label: "참가 안내", href: "#participation-guide" },
   { label: "Contact", href: "#contact" },
 ];
 ---
@@ -34,10 +36,11 @@ const navItems = [
     <CompetitionInfo />
     <CompetitionPlan />
     <CompetitionReward />
+    <ParticipationGuideSection />
     <ContactSection />
 
 
-    <HeroSection />
+    <!-- <HeroSection /> -->
     <!-- <ServiceSection /> -->
   </main>
 </section>
