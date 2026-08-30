@@ -3,7 +3,7 @@
 ## Source of truth
 - Status: Active
 - Last refreshed: 2026-08-28
-- Primary product surfaces: Astro single-page KOSSCCTHON information site
+- Primary product surfaces: Astro single-page KOSSCCHTHON information site
 - Evidence reviewed: `README.md`, `src/layouts/Layout.astro`, `src/components/home-page/HomePage.astro`, `src/components/home-page/sections/*.astro`, `src/assets/background.svg`, `src/assets/temp-poster.png`, `/home/minwoo/KakaoTalk/Downloads/현수막.svg`, user-provided poster references
 
 ## Brand
@@ -12,7 +12,7 @@
 - Avoid: fake application URLs, stale 2026 spring content, dense fixed-pixel poster-only layouts
 
 ## Product goals
-- Goals: communicate KOSSCCTHON 2026 event facts clearly and drive students toward the application QR/Google Form flow once available
+- Goals: communicate KOSSCCHTHON 2026 event facts clearly and drive students toward the application QR/Google Form flow once available
 - Non-goals: full registration handling, QR decoding, payment, team management, or live schedule operations
 - Success signals: users can identify eligibility, timeline, venue, judging criteria, prizes, and contact without needing poster images
 
@@ -41,7 +41,7 @@
 
 ## Components
 - Existing components to reuse: `HomePage`, `SectionLayout`, section components under `src/components/home-page/sections`
-- New/changed components: all active home sections refreshed for 2026 KOSSCCTHON content
+- New/changed components: all active home sections refreshed for 2026 KOSSCCHTHON content
 - Variants and states: unavailable application link uses disabled/notice styling instead of a fake URL
 - Token/component ownership: section-local CSS variables in `SectionLayout` and page-level global font/background in `HomePage`
 
@@ -67,7 +67,7 @@
 
 ## Content voice
 - Tone: clear, direct, polished Korean event 안내
-- Terminology: KOSSCCTHON, 2026 연합 경진대회, 무박 2일 현장 해커톤, KIRO 크레딧
+- Terminology: KOSSCCHTHON, 2026 연합 경진대회, 무박 2일 현장 해커톤, KIRO 크레딧
 - Microcopy rules: do not invent links; mark unknown registration destination plainly
 
 ## Implementation constraints
