@@ -1,130 +1,203 @@
 ---
 import SectionLayout from "./SectionLayout.astro";
+
+const guide = [
+	{
+		label: "모집 기간",
+		value: "2026.09.01 (화) ~ 09.11 (금)",
+	},
+	{
+		label: "신청 방법",
+		value: "구글폼에서 개인 단위로 제출",
+	},
+	{
+		label: "문의처",
+		value: "kosscch3@gmail.com",
+	},
+];
 ---
 
-<SectionLayout sectionId="participation-guide" sectionName="participation-guide" sectionClass="participation-guide-section">
-	<div class="participation-content">
-		<h2 class="section-title">참가 안내</h2>
-		<div class="guide-list">
-			<button class="guide-button" type="button">
-				<span class="icon-circle" aria-hidden="true">
-					<svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-						<path d="M16 5V20" stroke="#0070d9" stroke-width="3" stroke-linecap="round" />
-						<path d="M10 15L16 21L22 15" stroke="#0070d9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-						<path d="M7 23V27H25V23" stroke="#0070d9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-					</svg>
-				</span>
-				<span class="guide-button-text">대회 개발계획서 양식 다운로드</span>
-			</button>
+<SectionLayout sectionId="apply" sectionName="apply" sectionClass="participation-guide-section">
+	<div class="application-content">
+		<p class="eyebrow">Apply</p>
+		<h2>접수 방법</h2>
 
-			<button class="guide-button" type="button">
-				<span class="icon-circle" aria-hidden="true">
-					<svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-						<path d="M16 5V20" stroke="#0070d9" stroke-width="3" stroke-linecap="round" />
-						<path d="M10 15L16 21L22 15" stroke="#0070d9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-						<path d="M7 23V27H25V23" stroke="#0070d9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-					</svg>
-				</span>
-				<span class="guide-button-text">대회 참가 신청 구글폼</span>
-			</button>
+		<dl class="apply-list">
+			{guide.map((item) => (
+				<div>
+					<dt>
+						<span aria-hidden="true">✓</span>
+						{item.label}
+					</dt>
+					<dd>{item.value}</dd>
+				</div>
+			))}
+		</dl>
+
+		<div class="qr-panel" role="note" aria-label="신청 페이지 안내">
+			<div>
+				<h3>신청 페이지</h3>
+				<p>아래 버튼을 눌러 참가 신청 구글폼으로 이동하세요.</p>
+			</div>
+			<a
+				class="application-status"
+				href="https://forms.gle/LwN3c4tjxFrGto7A6"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				신청하기
+			</a>
 		</div>
 	</div>
 </SectionLayout>
 
 <style>
-	.participation-content {
-		width: min(100%, 920px);
+	.application-content {
+		width: min(100%, 900px);
 		margin: 0 auto;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+		color: #ffffff;
 		text-align: center;
-		color: #ffffff;
 	}
 
-	.section-title {
+	.eyebrow,
+	h2,
+	h3,
+	p,
+	.apply-list {
 		margin: 0;
-		font-size: 40px;
-		font-weight: 800;
-		line-height: 1.1;
-		letter-spacing: -0.04em;
 	}
 
-	.guide-list {
-		width: 100%;
-		max-width: 400px;
-		margin-top: 52px;
-		display: flex;
-		flex-direction: column;
-		gap: 16px;
+	.eyebrow {
+		color: var(--kosscch-blue);
+		font-size: 15px;
+		font-weight: 900;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
 	}
 
-	.guide-button {
-		width: 100%;
-		max-width: 400px;
-		height: 103px;
-		padding: 0 34px 0 20px;
-		border: 0;
-		border-radius: 16px;
-		background: #0b2536;
-		color: #ffffff;
-		font: inherit;
-		font-size: 20px;
-		font-weight: 700;
-		letter-spacing: -0.4px;
-		display: flex;
+	h2 {
+		margin-top: 12px;
+		font-size: clamp(38px, 6vw, 68px);
+		font-weight: 900;
+		line-height: 1.05;
+	}
+
+	.apply-list {
+		margin-top: 48px;
+		display: grid;
+		gap: 18px;
+	}
+
+	.apply-list div {
+		padding: 24px clamp(20px, 4vw, 32px);
+		display: grid;
+		grid-template-columns: 180px minmax(0, 1fr);
+		gap: 18px;
 		align-items: center;
-		gap: 26px;
-		cursor: pointer;
-		margin: 0 auto;
+		border: 1px solid rgba(56, 213, 255, 0.54);
+		border-radius: 22px;
+		background: rgba(3, 12, 31, 0.76);
+		box-shadow: 0 0 26px rgba(21, 102, 232, 0.22);
 	}
 
-	.icon-circle {
-		width: 64px;
-		height: 64px;
-		flex: 0 0 64px;
-		border-radius: 50%;
-		background: #003b75;
+	dt,
+	dd {
+		margin: 0;
+	}
+
+	dt {
 		display: flex;
+		gap: 12px;
+		align-items: center;
+		color: var(--kosscch-blue);
+		font-size: clamp(18px, 2.2vw, 23px);
+		font-weight: 900;
+	}
+
+	dt span {
+		color: #ffffff;
+		font-size: 28px;
+		line-height: 1;
+	}
+
+	dd {
+		color: #ffffff;
+		font-size: clamp(18px, 2.6vw, 26px);
+		font-weight: 800;
+		line-height: 1.35;
+		text-align: left;
+	}
+
+	.qr-panel {
+		margin: 30px auto 0;
+		padding: 22px;
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 22px;
+		align-items: center;
+		border: 1px dashed rgba(235, 245, 255, 0.34);
+		border-radius: 22px;
+		background: rgba(0, 79, 159, 0.14);
+		text-align: left;
+	}
+
+	.qr-panel h3 {
+		color: #ffffff;
+		font-size: 24px;
+		font-weight: 900;
+	}
+
+	.qr-panel p {
+		margin-top: 8px;
+		color: rgba(235, 245, 255, 0.78);
+		font-size: 16px;
+		font-weight: 600;
+	}
+
+	.application-status {
+		display: inline-flex;
 		align-items: center;
 		justify-content: center;
+		min-height: 48px;
+		padding: 0 20px;
+		border: 1px solid rgba(101, 168, 255, 0.42);
+		border-radius: 999px;
+		background: rgba(0, 79, 159, 0.24);
+		color: #ffffff;
+		font-size: 16px;
+		font-weight: 900;
+		white-space: nowrap;
+		transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 	}
 
-	.guide-button-text {
-		flex: 1;
-		text-align: center;
-		white-space: nowrap;
-		font-size: 20px;
-		font-weight: 700;
-		line-height: 1.2;
+	.application-status:hover {
+		border-color: var(--kosscch-cyan);
+		background: rgba(0, 112, 217, 0.42);
+		transform: translateY(-2px);
+	}
+
+	.application-status:focus-visible {
+		outline: 3px solid var(--kosscch-cyan);
+		outline-offset: 4px;
 	}
 
 	@media (max-width: 720px) {
-		.section-title {
-			font-size: 32px;
+		.apply-list div,
+		.qr-panel {
+			grid-template-columns: 1fr;
+			text-align: center;
 		}
 
-		.guide-list {
-			max-width: 100%;
-			margin-top: 40px;
-			gap: 14px;
+		dt {
+			justify-content: center;
 		}
 
-		.guide-button {
-			height: 103px;
-			padding-left: 20px;
-			padding-right: 20px;
-			gap: 20px;
+		dd {
+			text-align: center;
 		}
 
-		.guide-button-text {
-			font-size: 16px;
-		}
-
-		.icon-circle {
-			width: 64px;
-			height: 64px;
-			flex-basis: 64px;
+		.application-status {
+			margin: 0 auto;
 		}
 	}
 </style>

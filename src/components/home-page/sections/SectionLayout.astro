@@ -6,6 +6,7 @@ interface Props {
   tagline?: string;
   title?: string;
   showTitle?: boolean;
+  titleTag?: string;
 }
 
 const {
@@ -26,7 +27,12 @@ const {
 
 <style>
   :root {
-    --kosscch-bg-color: #121513;
+    --kosscch-bg-color: transparent;
+    --kosscch-panel-bg: rgba(3, 12, 31, 0.72);
+    --kosscch-panel-border: rgba(116, 166, 255, 0.34);
+    --kosscch-blue: #65a8ff;
+    --kosscch-cyan: #38d5ff;
+    --kosscch-text-muted: rgba(235, 245, 255, 0.76);
   }
 
   .sticky-stage {
@@ -42,7 +48,7 @@ const {
     display: flex;
     align-items: center;
 
-    padding: 96px 0;
+    padding: clamp(72px, 9vw, 112px) clamp(18px, 4vw, 64px);
     overflow: hidden;
   }
 
@@ -61,16 +67,23 @@ const {
     justify-content: center;
   }
 
+  .section-content {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+  }
+
 
 
   :global(p) {
-    color: #666;
+    color: var(--kosscch-text-muted);
     line-height: 1.7;
   }
 
   @media (max-width: 720px) {
     .panel {
-      padding: 88px 0 64px;
+      position: relative;
+      min-height: auto;
+      padding: 72px 18px;
     }
   }
 </style>

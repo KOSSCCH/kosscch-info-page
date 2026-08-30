@@ -2,247 +2,149 @@
 import SectionLayout from "./SectionLayout.astro";
 ---
 
-<SectionLayout sectionId="contact" sectionName="contact">
+<SectionLayout sectionId="contact" sectionName="contact" sectionClass="contact-section">
   <div class="contact-wrapper">
-    <h1 class="title">기타사항</h1>
+    <p class="eyebrow">Contact</p>
+    <h2>마지막 확인</h2>
 
-    <section class="contact-section">
-      <h2 class="section-title">문의</h2>
+    <div class="contact-grid">
+      <section aria-labelledby="format-title">
+        <h3 id="format-title">진행 방식</h3>
+        <p>무박 2일 현장 해커톤으로 운영되며, 주제는 대회 당일 현장에서 공개됩니다.</p>
+      </section>
 
-      <div class="contact-card">
-        <div class="icon-circle">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path
-              d="M5 8.5H27V23.5H5V8.5Z"
-              stroke="#0070d9"
-              stroke-width="2.7"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M6.5 10L16 16.5L25.5 10"
-              stroke="#0070d9"
-              stroke-width="2.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+      <section aria-labelledby="eligibility-title">
+        <h3 id="eligibility-title">참가 대상</h3>
+        <p>국민대학교, 숭실대학교, 순천향대학교 소속 대학생 누구나 지원할 수 있습니다. 전공 무관이며 휴학생도 포함됩니다.</p>
+      </section>
+
+      <address class="mail-card" aria-label="문의 이메일">
+        <span class="mail-icon" aria-hidden="true">@</span>
+        <div>
+          <span>문의처</span>
+          <a href="mailto:kosscch3@gmail.com">kosscch3@gmail.com</a>
         </div>
-
-        <span>kosscch3@gmail.com</span>
-      </div>
-
-      <p class="notice">* 문의하신 내용은 확인 후 순차적으로 답변드리고 있습니다.</p>
-    </section>
-
-    <section class="download-area">
-      <div class="download-box">
-        <h2 class="download-title">대회 운영 규정</h2>
-
-        <button class="download-button">
-          <div class="icon-circle">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path
-                d="M16 5V20"
-                stroke="#0070d9"
-                stroke-width="3"
-                stroke-linecap="round"
-              />
-              <path
-                d="M10 15L16 21L22 15"
-                stroke="#0070d9"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M7 23V27H25V23"
-                stroke="#0070d9"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
-
-          <span>대회 운영 규정 파일 다운로드</span>
-        </button>
-      </div>
-
-      <div class="download-box">
-        <h2 class="download-title">심사 기준</h2>
-
-        <button class="download-button">
-          <div class="icon-circle">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path
-                d="M16 5V20"
-                stroke="#0070d9"
-                stroke-width="3"
-                stroke-linecap="round"
-              />
-              <path
-                d="M10 15L16 21L22 15"
-                stroke="#0070d9"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M7 23V27H25V23"
-                stroke="#0070d9"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
-
-          <span>심사 기준 파일 다운로드</span>
-        </button>
-      </div>
-    </section>
+      </address>
+    </div>
   </div>
 </SectionLayout>
 
-
 <style>
-  /* :global(body) {
-    background: #0b1210;
-    font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
-    color: #ffffff;
-  } */
-
   .contact-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-    color: #ffffff;
-  }
-
-  .title {
-    text-align: center;
-    font-size: 42px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    margin: 0 0 20px;
-  }
-
-  .contact-section {
-    text-align: center;
-  }
-
-  .section-title {
-    margin: 0 0 18px;
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-  }
-
-  .contact-card {
-    max-width: 400px;
-    height: 103px;
+    width: min(100%, 960px);
     margin: 0 auto;
-    padding: 0 38px 0 22px;
-    border-radius: 18px;
-    background: #0b2536;
-    display: flex;
-    align-items: center;
-    gap: 40px;
+    color: #ffffff;
+    text-align: center;
   }
 
-  .icon-circle {
-    width: 64px;
-    height: 64px;
-    flex: 0 0 64px;
-    border-radius: 50%;
-    background: #003b75;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .eyebrow,
+  h2,
+  h3,
+  p {
+    margin: 0;
   }
 
-  .contact-card span {
-    font-size: 21px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    white-space: nowrap;
+  .eyebrow {
+    color: var(--kosscch-blue);
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
 
-  .notice {
-    max-width: 400px;
-    margin: 19px auto 0;
-    text-align: left;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: -0.2px;
+  h2 {
+    margin-top: 12px;
+    font-size: clamp(38px, 6vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
   }
 
-  .download-area {
+  .contact-grid {
+    margin-top: 48px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 70px;
-    max-width: 870px;
-    margin: 0 auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
   }
 
-  .download-box {
-    text-align: center;
+  .contact-grid section,
+  .mail-card {
+    padding: clamp(24px, 4vw, 34px);
+    border: 1px solid rgba(101, 168, 255, 0.28);
+    border-radius: 24px;
+    background: rgba(3, 12, 31, 0.74);
+    text-align: left;
+    box-shadow: 0 22px 64px rgba(0, 0, 0, 0.22);
   }
 
-  .download-title {
-    margin: 0 0 20px;
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-  }
-
-  .download-button {
-    width: 100%;
-    max-width: 400px;
-    height: 103px;
-    padding: 0 34px 0 20px;
-    border: 0;
-    border-radius: 16px;
-    background: #0b2536;
+  h3 {
     color: #ffffff;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 900;
+    line-height: 1.2;
+  }
+
+  p {
+    margin-top: 14px;
+    color: rgba(235, 245, 255, 0.8);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.65;
+  }
+
+  .mail-card {
+    grid-column: 1 / -1;
     display: flex;
+    gap: 18px;
     align-items: center;
-    gap: 26px;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.4px;
-    font-family: inherit;
-    margin: 0 auto;
+    font-style: normal;
   }
 
-  .download-button:hover {
-    background: #0d2d43;
+  .mail-icon {
+    width: 64px;
+    aspect-ratio: 1;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 18px;
+    background: rgba(0, 79, 159, 0.28);
+    color: var(--kosscch-cyan);
+    font-size: 30px;
+    font-weight: 900;
   }
 
-  svg {
+  .mail-card span:not(.mail-icon) {
     display: block;
-    flex-shrink: 0;
+    color: var(--kosscch-blue);
+    font-size: 16px;
+    font-weight: 900;
   }
 
-  @media (max-width: 768px) {
-    .title {
-      font-size: 32px;
-    }
+  .mail-card a {
+    display: inline-block;
+    margin-top: 6px;
+    color: #ffffff;
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 900;
+    overflow-wrap: anywhere;
+  }
 
-    .section-title,
-    .download-title {
-      font-size: 24px;
-    }
+  .mail-card a:focus-visible {
+    outline: 3px solid var(--kosscch-cyan);
+    outline-offset: 4px;
+    border-radius: 6px;
+  }
 
-    .download-area {
+  @media (max-width: 720px) {
+    .contact-grid {
       grid-template-columns: 1fr;
-      gap: 40px;
     }
 
-    .download-button {
-      font-size: 16px;
+    .contact-grid section,
+    .mail-card {
+      text-align: center;
+    }
+
+    .mail-card {
+      flex-direction: column;
     }
   }
 </style>

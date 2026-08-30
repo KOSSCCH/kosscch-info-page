@@ -13,18 +13,18 @@ interface Props {
 
 const {
 	tagline = "Competition",
-	sectionId = "competition",
-	sectionName = "competition",
-	pretitle = "국민대학교 x 숭실대학교 x 순천향대학교 공동 주최",
-	titleLine = "KOSSCCH",
-	subtitle = "코쓱톤 경진대회",
+	sectionId = "home",
+	sectionName = "home",
+	pretitle = "국민대 × 숭실대 × 순천향대",
+	titleLine = "KOSSCCTHON",
+	subtitle = "2026 연합 경진대회",
 	sectionClass = "",
 } = Astro.props;
 
 const infoRows = [
-	{ label: "대회주제", value: "AI를 활용한 서비스 개발" },
-	{ label: "대회기간", value: "2026.4.7 ~ 4.8" },
-	{ label: "참가자격", value: "SW중심대학사업단 소속 대학생" },
+	{ label: "대회 기간", value: "2026.09.19 (토) - 09.20 (일)" },
+	{ label: "대회 장소", value: "국민대학교 미래관 429호" },
+	{ label: "진행 방식", value: "무박 2일 현장 해커톤" },
 ];
 ---
 
@@ -36,23 +36,33 @@ const infoRows = [
 	showTitle={false}
 	sectionClass={`competition-title ${sectionClass}`.trim()}
 >
-	<div class="competition-content">
-		<h3 class="pretitle">{pretitle}</h3>
+	<div class="hero-content">
+		<p class="eyebrow">{tagline}</p>
 		<h1 class="title-line">{titleLine}</h1>
 		<h2 class="subtitle">{subtitle}</h2>
+		<p class="pretitle">{pretitle}</p>
 
-		<div class="divider"></div>
+		<div class="hero-card" aria-label="대회 핵심 정보">
+			<div class="hero-copy">
+				<p class="hero-note">AI를 파트너로 삼아 현장에서 아이디어를 결과물로 증명하는 3개 대학 연합 해커톤입니다.</p>
 
-		<div class="info-list">
-			{infoRows.map((row) => (
-				<div class="info-row">
-					<div class="info-label">{row.label}</div>
-					<div class="info-value">{row.value}</div>
-				</div>
-			))}
+				<dl class="info-list">
+					{infoRows.map((row) => (
+						<div class="info-row">
+							<dt class="info-label">{row.label}</dt>
+							<dd class="info-value">{row.value}</dd>
+						</div>
+					))}
+				</dl>
+			</div>
+
 		</div>
 
-		<div class="divider"></div>
+		<div class="university-list" aria-label="참여 대학">
+			<span>국민대학교</span>
+			<span>숭실대학교</span>
+			<span>순천향대학교</span>
+		</div>
 	</div>
 	
     <slot />
@@ -62,100 +72,146 @@ const infoRows = [
 
 
 <style>	
+	.hero-content,
+	.eyebrow,
 	.pretitle,
 	.title-line,
-	.subtitle {
+	.subtitle,
+	.hero-note {
 		margin: 0;
-		font-family: Inter, system-ui, sans-serif;
 	}
 
-	.competition-content {
-		width: min(100%, 680px);
+	.hero-content {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
+		color: #ffffff;
 	}
 
-	.divider {
-		width: 100%;
-		height: 1px;
-		background-color: #ffffff;
-		margin-top: 26px;
+	.eyebrow {
+		margin-bottom: 18px;
+		color: #9fc7ff;
+		font-size: 16px;
+		font-weight: 800;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.title-line {
+		color: #65a8ff;
+		font-size: clamp(54px, 11vw, 136px);
+		font-weight: 900;
+		line-height: 0.95;
+		text-wrap: balance;
+	}
+
+	.subtitle {
+		margin-top: 18px;
+		color: #ffffff;
+		font-size: clamp(34px, 6vw, 72px);
+		font-weight: 900;
+		line-height: 1.08;
+	}
+
+	.pretitle {
+		margin-top: 24px;
+		color: #ffffff;
+		font-size: clamp(18px, 3vw, 32px);
+		font-weight: 800;
+	}
+
+	.hero-card {
+		width: min(100%, 980px);
+		margin-top: 44px;
+		padding: clamp(22px, 4vw, 36px);
+		border: 1px solid rgba(116, 166, 255, 0.42);
+		border-radius: 28px;
+		background: rgba(2, 10, 28, 0.72);
+		box-shadow:
+			0 0 0 1px rgba(57, 138, 255, 0.14) inset,
+			0 24px 80px rgba(0, 0, 0, 0.36);
+	}
+
+	.hero-copy {
+		text-align: left;
+	}
+
+	.hero-note {
+		margin-bottom: 24px;
+		color: rgba(235, 245, 255, 0.82);
+		font-size: clamp(17px, 2vw, 22px);
+		font-weight: 600;
 	}
 
 	.info-list {
-		width: min(100%, 396px);
-		margin-inline: auto;
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-		margin-top: 22px;
+		margin: 0;
+		display: grid;
+		gap: 12px;
 	}
 
 	.info-row {
 		display: grid;
-		width: 100%;
-		grid-template-columns: 113px 1fr;
+		grid-template-columns: 112px minmax(0, 1fr);
 		gap: 16px;
-		align-items: center;
+		align-items: baseline;
+	}
+
+	.info-label,
+	.info-value {
+		margin: 0;
 	}
 
 	.info-label {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 51px;
-		padding: 0 18px;
-		border-radius: 20px;
-		background: #004F9F33;
-		color: #ffffff;
-		font-size: 20px;
+		color: #65a8ff;
+		font-size: 15px;
 		font-weight: 800;
-		line-height: 1;
-		white-space: nowrap;
-		box-sizing: border-box;
 	}
 
 	.info-value {
-		text-align: left;
 		color: #ffffff;
-		font-size: 20px;
-		font-weight: 500;
-		line-height: 1.3;
-		white-space: nowrap;
+		font-size: clamp(17px, 2.2vw, 22px);
+		font-weight: 700;
+		line-height: 1.35;
 	}
 
-	.pretitle {
-		font-size: 25px;
-		font-weight: 800;
-		line-height: 1.2;
-		color: #ffffff;
+	.university-list {
+		margin-top: 24px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		justify-content: center;
 	}
 
-	.title-line {
-		font-size: clamp(56px, 7vw, 70px);
-		font-weight: 600;
-		line-height: 1.1;
-		color: #1566e8;
-	}
-
-	.subtitle {
-		font-size: clamp(60px, 8vw, 85px);
-		font-weight: 800;
-		line-height: 1.05;
-		color: #ffffff;
+	.university-list span {
+		padding: 10px 14px;
+		border: 1px solid rgba(101, 168, 255, 0.36);
+		border-radius: 999px;
+		background: rgba(0, 79, 159, 0.2);
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 15px;
+		font-weight: 700;
 	}
 
 	@media (max-width: 720px) {
-		.info-row {
-			grid-template-columns: 1fr;
-			gap: 8px;
+		.title-line {
+			font-size: clamp(40px, 12vw, 54px);
+			letter-spacing: -0.03em;
 		}
 
-		.info-label {
-			width: fit-content;
-			margin: 0 auto;
+		.hero-card {
+			margin-top: 32px;
+			border-radius: 22px;
+		}
+
+		.hero-copy {
+			text-align: center;
+		}
+
+		.info-row {
+			grid-template-columns: 1fr;
+			gap: 4px;
+			text-align: center;
 		}
 	}
 </style>
