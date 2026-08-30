@@ -79,11 +79,16 @@ const {
     line-height: 1.7;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 900px), (pointer: coarse) {
+    .sticky-stage {
+      min-height: auto;
+    }
+
     .panel {
       position: relative;
       min-height: auto;
       padding: 72px 18px;
+      overflow: visible;
     }
   }
 </style>

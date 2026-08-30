@@ -9,10 +9,10 @@ const createHomePageController = () => {
 
   const ANIMATION_LOCK_MS = 750;
   const ACTIVE_SECTION_THRESHOLD = 0.6;
+  const snapMediaQuery = window.matchMedia("(min-width: 901px) and (pointer: fine)");
 
   let currentIndex = 0;
   let isAnimating = false;
-  let touchStartY = 0;
   let unlockTimer: number | undefined;
   let intersectionObserver: IntersectionObserver | undefined;
   const sectionThresholds = [0.2, 0.4, ACTIVE_SECTION_THRESHOLD, 0.8, 1];
@@ -113,6 +113,7 @@ const createHomePageController = () => {
   };
 
   const handleWheel = (event: WheelEvent) => {
+    if (!snapMediaQuery.matches) return;
     if (event.ctrlKey) return;
     if (event.deltaY === 0) return;
 
@@ -127,31 +128,6 @@ const createHomePageController = () => {
     } else {
       moveByOffset(-1);
     }
-  };
-
-  const handleTouchStart = (event: TouchEvent) => {
-    touchStartY = event.touches[0].clientY;
-  };
-
-  const handleTouchMove = (event: TouchEvent) => {
-    event.preventDefault();
-
-    if (isAnimating) {
-      return;
-    }
-
-    const currentY = event.touches[0].clientY;
-    const diff = touchStartY - currentY;
-
-    if (diff === 0) return;
-
-    if (diff > 0) {
-      moveByOffset(1);
-    } else {
-      moveByOffset(-1);
-    }
-
-    touchStartY = currentY;
   };
 
   const handleNavClick = (event: MouseEvent) => {
@@ -202,8 +178,6 @@ const createHomePageController = () => {
 
   window.addEventListener("scroll", updateHeader, { passive: true });
   window.addEventListener("wheel", handleWheel, { passive: false });
-  window.addEventListener("touchstart", handleTouchStart, { passive: true });
-  window.addEventListener("touchmove", handleTouchMove, { passive: false });
 
   document.addEventListener("click", handleNavClick);
 
