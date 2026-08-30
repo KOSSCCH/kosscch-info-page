@@ -1,86 +1,114 @@
 ---
 import SectionLayout from "./SectionLayout.astro";
-
-interface Feature {
-  title: string;
-  description: string;
-}
-
-interface Props {
-  tagline?: string;
-  title?: string;
-  description?: string;
-  features?: Feature[];
-}
-
-
 ---
 
 <SectionLayout sectionId="about" sectionName="about">
+  <article class="about-panel">
+    <p class="eyebrow">About</p>
+    <h2>대회 개요</h2>
 
-  <h3>
-    코쓱톤이 무엇인가요?
-  </h3>
+    <p class="description">
+      KOSSCCTHON은 국민대학교, 숭실대학교, 순천향대학교 학생들이 한 공간에서 팀을 이루고
+      AI 기반 서비스를 끝까지 구현해 보는 2026 연합 경진대회입니다. 주제는 대회 당일 현장에서
+      공개되며, 무박 2일 동안 기획, 개발, 발표까지 이어집니다.
+    </p>
 
-  <p class="description">
-코쓱톤은 국민대학교 소프트웨어융합대학 동아리 KOSS와 숭실대학교 중앙동아리 SSCC, 순천향대학교(SCHU)가 공동 주최하는 해커톤입니다.
-<br /><br />
-AI가 짜준 코드에 머쓱해하던 것을 지나, 이제는 AI를 완벽한 파트너로 삼아 프로젝트를 설계하고 구현하고 증명합니다. 코쓱톤은 아이디어를 끝까지 결과물로 완성하며 개발자의 시야를 확장하는 End-to-End 해커톤입니다.
-막연한 아이디어가 아닌, 정교한 설계로 빈 껍데기 없는 결과물을 완성하며 성장의 즐거움을 나눕니다.
-머쓱함은 여기까지, 이제는 자신감으로 결과를 증명할 차례입니다.
-  </p>  
+    <dl class="facts">
+      <div>
+        <dt>대회 기간</dt>
+        <dd><time datetime="2026-09-19">2026.09.19 (토)</time> - <time datetime="2026-09-20">09.20 (일)</time></dd>
+      </div>
+      <div>
+        <dt>대회 장소</dt>
+        <dd>국민대학교 미래관 429호<br />자율주행스튜디오</dd>
+      </div>
+      <div>
+        <dt>참가 대상</dt>
+        <dd>국민대학교 · 숭실대학교 · 순천향대학교 소속 대학생<br />전공 무관, 휴학생 포함</dd>
+      </div>
+      <div>
+        <dt>참가 인원</dt>
+        <dd>90명</dd>
+      </div>
+    </dl>
+  </article>
 </SectionLayout>
 
 <style>
-  :global(.about h2) {
-    max-width: 760px;
-    font-size: clamp(42px, 7vw, 76px);
+  .about-panel {
+    width: min(100%, 980px);
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 54px);
+    border: 1px solid var(--kosscch-panel-border);
+    border-radius: 28px;
+    background: var(--kosscch-panel-bg);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
   }
 
-  h3 {
+  .eyebrow {
     margin: 0 0 12px;
-    font-size: 48px;
-    letter-spacing: -0.04em;
+    color: var(--kosscch-blue);
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(38px, 6vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
     color: white;
   }
 
-  p {
-    color: #666;
-    line-height: 1.7;
-  }
-
   .description {
-    max-width: 660px;
-    font-size: 18px;
+    max-width: 760px;
+    margin: 24px 0 0;
+    color: rgba(235, 245, 255, 0.84);
+    font-size: clamp(17px, 2vw, 21px);
+    font-weight: 500;
   }
 
-  .grid {
+  .facts {
+    margin: 38px 0 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-top: 36px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
   }
 
-  .card {
-    padding: 28px;
-    border: 1px solid #e5e5e5;
-    border-radius: 24px;
-    background: rgba(255, 255, 255, 0.86);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
-
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease;
+  .facts div {
+    min-height: 138px;
+    padding: 24px;
+    border: 1px solid rgba(101, 168, 255, 0.22);
+    border-radius: 18px;
+    background: rgba(0, 79, 159, 0.18);
+    display: grid;
+    align-content: start;
+    gap: 12px;
   }
 
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.08);
+  dt {
+    color: var(--kosscch-blue);
+    font-size: 16px;
+    font-weight: 900;
+  }
+
+  dd {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 800;
+    line-height: 1.45;
   }
 
   @media (max-width: 720px) {
-    .grid {
+    .about-panel {
+      border-radius: 22px;
+      padding: 26px 20px;
+    }
+
+    .facts {
       grid-template-columns: 1fr;
     }
   }

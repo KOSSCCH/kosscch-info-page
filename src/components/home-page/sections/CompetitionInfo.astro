@@ -1,49 +1,36 @@
 ---
-import { Image } from 'astro:assets';
-import competitionPoster from '../../../assets/temp-poster.png';
 import SectionLayout from "./SectionLayout.astro";
 
 interface Props {
 	tagline?: string;
 	sectionId?: string;
 	sectionName?: string;
-	pretitle?: string;
-	titleLine?: string;
-	subtitle?: string;
 	sectionClass?: string;
 }
 
 const {
 	tagline = "Competition",
-	sectionId = "competition",
-	sectionName = "competition",
-	pretitle = "국민대학교 x 숭실대학교 x 순천향대학교 공동 주최",
-	titleLine = "KOSSCCH",
-	subtitle = "코쓱톤 경진대회",
+	sectionId = "info",
+	sectionName = "info",
 	sectionClass = "",
 } = Astro.props;
 
 const infoItems = [
 	{
-		label: "참가대상",
-		value: "SW중심대학사업단 소속 대학생 (전공 무관)",
+		label: "개인 단위 신청",
+		value: "팀이 아닌 개인 단위로 참가 신청서를 제출합니다.",
 	},
 	{
-		label: "운영방식",
-		value: [
-			"공고일 기준 재학생, 휴학생, 수료생으로 구성된 1~5인의 팀",
-			"SW중심대학 소속 대학이 서로 다른 학생들로 자유롭게 팀 구성 가능",
-			"참가자는 복수의 팀에 중복하여 참가 가능 (단 예선 통과 시, 1개의 팀만 선택 필요)",
-			"단, 팀장은 대학교 재학생으로 제한",
-		],
+		label: "팀 빌딩",
+		value: "신청자의 기술 스택과 개발 수준을 고려해 3개 대학 참가자가 균형 있게 구성됩니다.",
 	},
 	{
-		label: "신청방법",
-		value: "하단 구글폼에 팀 단위로 개발계획서 제출",
+		label: "결과물 제출",
+		value: "정해진 기간 내에 개발 결과물을 제출합니다.",
 	},
 	{
-		label: "시상내역",
-		value: "총 10팀, 총 1000만원",
+		label: "참가 혜택",
+		value: "AI 개발을 위한 KIRO 크레딧을 제공합니다.",
 	},
 ];
 ---
@@ -52,37 +39,24 @@ const infoItems = [
 	sectionId={sectionId}
 	sectionName={sectionName}
 	tagline={tagline}
-	title={titleLine}
 	showTitle={false}
 	sectionClass={`competition-info ${sectionClass}`.trim()}
 >
 	<div class="competition-content">
-		<h2 class="section-title">대회개요</h2>
+		<p class="eyebrow">{tagline}</p>
+		<h2 class="section-title">모집 안내</h2>
+		<p class="section-lead">신청은 개인 단위로 받고, 현장에서 균형 있는 팀을 구성해 함께 개발합니다.</p>
 
-		<div class="overview-grid">
-			<div class="poster-frame">
-				<Image class="poster" src={competitionPoster} alt="대회 포스터" />
-			</div>
-
-			<div class="info-panel">
-				{infoItems.map((item) => (
-					<div class:list={["info-row", Array.isArray(item.value) ? "info-row--stack" : ""]}>
-						<div class="info-label">{item.label}</div>
-						<div class:list={["info-value", Array.isArray(item.value) ? "info-value--stack" : ""]}>
-							{Array.isArray(item.value) ? (
-								<>
-									<p class="info-value-intro">{item.value[0]}</p>
-									<ul class="info-list">
-										{item.value.slice(1).map((line) => <li>{line}</li>)}
-									</ul>
-								</>
-							) : (
-								item.value
-							)}
-						</div>
+		<div class="info-panel" role="list">
+			{infoItems.map((item, index) => (
+				<article class="info-card" role="listitem">
+					<span class="step" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+					<div>
+						<h3>{item.label}</h3>
+						<p>{item.value}</p>
 					</div>
-				))}
-			</div>
+				</article>
+			))}
 		</div>
 	</div>
 
@@ -91,158 +65,109 @@ const infoItems = [
 
 <style>
 	.competition-content {
-		width: min(100%, 1120px);
+		width: min(100%, 980px);
 		margin: 0 auto;
+		color: #ffffff;
+	}
+
+	.eyebrow,
+	.section-lead,
+	h3,
+	p {
+		margin: 0;
+	}
+
+	.eyebrow {
+		color: var(--kosscch-blue);
+		font-size: 15px;
+		font-weight: 900;
+		letter-spacing: 0.14em;
+		text-align: center;
+		text-transform: uppercase;
 	}
 
 	.section-title {
-		margin: 0 0 48px;
+		margin: 12px 0 0;
 		color: #ffffff;
-		font-size: 48px;
-		font-weight: 800;
+		font-size: clamp(38px, 6vw, 68px);
+		font-weight: 900;
+		line-height: 1.05;
 		text-align: center;
 	}
 
-	.overview-grid {
-		display: grid;
-		grid-template-columns: 413px minmax(0, 1fr);
-		gap: 32px;
-		align-items: start;
-		justify-content: center;
-	}
-
-	.poster-frame {
-		width: 100%;
-	}
-
-	.poster {
-		width: 100%;
-		height: auto;
-		display: block;
+	.section-lead {
+		max-width: 720px;
+		margin: 18px auto 0;
+		color: rgba(235, 245, 255, 0.8);
+		font-size: clamp(17px, 2vw, 21px);
+		font-weight: 600;
+		line-height: 1.65;
+		text-align: center;
 	}
 
 	.info-panel {
-		display: flex;
-		flex-direction: column;
-		gap: 18px;
-		padding-top: 12px;
-	}
-
-	.info-row {
+		margin-top: 44px;
 		display: grid;
-		grid-template-columns: 108px minmax(0, 1fr);
-		gap: 12px;
-		align-items: center;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 18px;
 	}
 
-	.info-row--stack {
+	.info-card {
+		min-height: 190px;
+		padding: clamp(22px, 4vw, 32px);
+		display: grid;
+		grid-template-columns: 78px minmax(0, 1fr);
+		gap: 22px;
 		align-items: start;
+		border: 1px solid rgba(101, 168, 255, 0.28);
+		border-radius: 24px;
+		background: rgba(3, 12, 31, 0.72);
+		box-shadow: 0 22px 64px rgba(0, 0, 0, 0.24);
 	}
 
-	.info-row--stack .info-label {
+	.step {
+		width: 72px;
+		aspect-ratio: 1;
+		display: inline-grid;
+		place-items: center;
+		border: 1px solid rgba(56, 213, 255, 0.76);
+		border-radius: 18px;
+		background: rgba(0, 79, 159, 0.28);
+		box-shadow: 0 0 24px rgba(21, 102, 232, 0.42) inset;
+		color: #ffffff;
+		font-size: 28px;
+		font-weight: 900;
+	}
+
+	h3 {
+		color: #ffffff;
+		font-size: clamp(22px, 3vw, 32px);
+		font-weight: 900;
 		line-height: 1.2;
-		padding-top: 4px;
 	}
 
-	.info-label {
-		color: #ffffff;
-		font-size: 20px;
-		font-weight: 800;
-		line-height: 70px;
-		white-space: nowrap;
-	}
-
-	.info-value {
-		color: #ffffff;
-		font-size: 20px;
-		font-weight: 500;
-		line-height: 1.55;
-		text-align: left;
-		white-space: nowrap;
-	}
-
-	.info-value--stack {
-		display: flex;
-		flex-direction: column;
-		gap: 4px;
-		white-space: normal;
-	}
-
-	.info-value-intro {
-		margin: 0 0 2px;
-        color: #ffffff;
-		font-weight: 500;
-		line-height: 1.45;
-	}
-
-	.info-list {
-		margin: 0;
-		padding-left: 18px;
-		color: rgba(255, 255, 255, 0.58);
-		font-size: 14px;
-		line-height: 1.45;
-	}
-
-	.info-list li {
-		margin: 0;
-	}
-
-	@media (max-width: 900px) {
-		.overview-grid {
-			grid-template-columns: 1fr;
-		}
-
-		.info-panel {
-			padding-top: 0;
-		}
-	}
-
-	@media (max-width: 720px) {
-		.info-row {
-			grid-template-columns: 1fr;
-			gap: 8px;
-		}
-
-		.info-label,
-		.info-value {
-			text-align: center;
-		}
-
-		.info-value {
-			white-space: normal;
-		}
-
-		.info-list {
-			padding-left: 20px;
-			text-align: left;
-		}
-	}
-
-	.pretitle,
-	.title-line,
-	.subtitle {
-		margin: 0;
-		font-family: Inter, system-ui, sans-serif;
-	}
-
-	.pretitle {
-		font-size: 25px;
-		font-weight: 800;
-		line-height: 1.2;
-		color: #ffffff;
-	}
-
-	.title-line {
-		font-size: clamp(56px, 7vw, 70px);
+	.info-card p {
+		margin-top: 10px;
+		color: rgba(235, 245, 255, 0.8);
+		font-size: clamp(16px, 2vw, 19px);
 		font-weight: 600;
-		line-height: 1.1;
-		color: #1566e8;
+		line-height: 1.6;
 	}
 
-	.subtitle {
-		font-size: clamp(60px, 8vw, 85px);
-		font-weight: 800;
-		line-height: 1.05;
-		color: #ffffff;
-	}
+  @media (max-width: 820px) {
+    .info-panel {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .info-card {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .step {
+      margin: 0 auto;
+    }
+  }
 </style>

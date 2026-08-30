@@ -1,185 +1,188 @@
 ---
 import SectionLayout from "./SectionLayout.astro";
 
-interface Props {
-	tagline?: string;
-	sectionId?: string;
-	sectionName?: string;
-	pretitle?: string;
-	titleLine?: string;
-	subtitle?: string;
-	sectionClass?: string;
-}
-
-const {
-	sectionId = "competition",
-	sectionName = "competition",
-	sectionClass = "",
-} = Astro.props;
+const criteria = [
+	{
+		title: "완성도",
+		weight: "50%",
+		description: "개발 목표 및 필수 기능의 완성도 높은 구현",
+	},
+	{
+		title: "실용성",
+		weight: "30%",
+		description: "실생활에서의 도입 가능성 및 안정적인 데모 시연",
+	},
+	{
+		title: "전달성",
+		weight: "20%",
+		description: "발표 전달력 및 프로젝트의 성장 가능성",
+	},
+];
 ---
 
-<SectionLayout
-	sectionId={sectionId}
-	sectionName={sectionName}
-	sectionClass={`competition-info ${sectionClass}`.trim()}
->
-	<div class="award-content">
-		<header class="award-header">
-			<h2 class="award-title">수상</h2>
-			<p class="award-subtitle">총 12팀, 총 1200만원</p>
-			<p class="award-subtitle award-subtitle--accent">SW중심대학사업단장상 수여</p>
-		</header>
+<SectionLayout sectionId="reward" sectionName="reward" sectionClass="competition-reward">
+	<div class="reward-content">
+		<p class="eyebrow">Evaluation & Awards</p>
+		<h2>심사 기준</h2>
 
-
-	<div style="width:904px; height:510px; background:#004F9F33; border-radius:16px; position:relative; overflow:hidden;">
-		<div style="
-			position:absolute;
-			left:48px;
-			top:51px;
-			width:796px;
-			height:425px;
-			display:grid;
-			grid-template-columns:398px 398px;
-			grid-template-rows: 70px 70px 70px 70px 70px 70px;
-			color:#fff;
-			font-size:16px;
-			font-weight:700;
-			line-height:1.45;
-			text-align:center;
-		">
-			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			구분
-			</div>
-			<div style="display:flex; align-items:center; justify-content:center; rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			상금
-			</div>
-
-			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			대상
-			</div>
-			<div style="display:flex; align-items:center; justify-content:center; rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			각 200만원(3팀)
-			</div>
-
-			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			최우수상
-			</div>
-			<div style="display:flex; align-items:center; justify-content:center; rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			각 100만원(3팀)
-			</div>
-
-			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			우수상
-			</div>
-			<div style="display:flex; align-items:center; justify-content:center; rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			각 50만원(6팀)
-			</div>
-
-			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			
-			</div>
-			<div style="display:flex; align-items:center; justify-content:center; rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			
-			</div>
-			
-			<div style="display:flex; background:#004F9F33; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65);">
-			합계
-			</div>
-			<div style="display:flex; background:#004F9F33; align-items:center; justify-content:center; rgba(255,255,255,0.65);">
-			1,200만원
-			</div>
-
-
+		<div class="criteria-grid">
+			{criteria.map((item) => (
+				<article class="criteria-card">
+					<div class="criteria-head">
+						<h3>{item.title}</h3>
+						<strong>{item.weight}</strong>
+					</div>
+					<p>{item.description}</p>
+				</article>
+			))}
 		</div>
+
+		<section class="award-panel" aria-labelledby="award-title">
+			<div>
+				<p class="award-kicker">시상 내역</p>
+				<h3 id="award-title">총 상금 1,500,000원</h3>
+			</div>
+			<ul>
+				<li>대상 3팀, 각 500,000원</li>
+				<li>각 대학 SW중심대학 사업단장 명의 상장 수여</li>
+			</ul>
+		</section>
+
+		<p class="note">※ 심사 및 시상 일정은 진행 상황에 따라 변경될 수 있습니다.</p>
 	</div>
-
-
-
-		<slot />
-</div>
 </SectionLayout>
 
-
-
-
 <style>
-	.award-content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+	.reward-content {
+		width: min(100%, 980px);
+		margin: 0 auto;
+		color: #ffffff;
+	}
+
+	.eyebrow,
+	h2,
+	h3,
+	p {
+		margin: 0;
+	}
+
+	.eyebrow {
+		color: var(--kosscch-blue);
+		font-size: 15px;
+		font-weight: 900;
+		letter-spacing: 0.14em;
 		text-align: center;
-		color: #ffffff;
+		text-transform: uppercase;
 	}
 
-	.award-header {
+	h2 {
+		margin-top: 12px;
+		font-size: clamp(38px, 6vw, 68px);
+		font-weight: 900;
+		line-height: 1.05;
+		text-align: center;
+	}
+
+	.criteria-grid {
+		margin-top: 46px;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 16px;
+	}
+
+	.criteria-card,
+	.award-panel {
+		border: 1px solid rgba(101, 168, 255, 0.28);
+		border-radius: 24px;
+		background: rgba(3, 12, 31, 0.74);
+		box-shadow: 0 22px 64px rgba(0, 0, 0, 0.22);
+	}
+
+	.criteria-card {
+		padding: 26px;
+	}
+
+	.criteria-head {
 		display: flex;
-		flex-direction: column;
+		gap: 14px;
 		align-items: center;
-		gap: 8px;
-		margin-bottom: 42px;
+		justify-content: space-between;
 	}
 
-	.award-title {
-		margin: 0;
-		font-size: 48px;
-		font-weight: 800;
-		line-height: 1.05;
-		letter-spacing: -0.04em;
-		color: #ffffff;
-	}
-
-	.award-subtitle {
-		margin: 0;
-		font-size: 18px;
-		font-weight: 600;
-		line-height: 1.35;
-		color: #ffffff;
-	}
-
-	.award-subtitle--accent {
-		font-weight: 500;
-	}
-
-	.pretitle,
-	.title-line,
-	.subtitle {
-		margin: 0;
-		font-family: Inter, system-ui, sans-serif;
-	}
-
-	.pretitle {
-		font-size: 25px;
-		font-weight: 800;
-		line-height: 1.2;
-		color: #ffffff;
-	}
-
-	.title-line {
-		font-size: clamp(56px, 7vw, 70px);
-		font-weight: 600;
+	.criteria-head h3 {
+		font-size: clamp(22px, 3vw, 32px);
+		font-weight: 900;
 		line-height: 1.1;
-		color: #1566e8;
 	}
 
-	.subtitle {
-		font-size: clamp(60px, 8vw, 85px);
-		font-weight: 800;
-		line-height: 1.05;
+	.criteria-head strong {
+		color: var(--kosscch-cyan);
+		font-size: clamp(24px, 3vw, 34px);
+		font-weight: 900;
+	}
+
+	.criteria-card p {
+		margin-top: 18px;
+		color: rgba(235, 245, 255, 0.78);
+		font-size: 17px;
+		font-weight: 600;
+		line-height: 1.6;
+	}
+
+	.award-panel {
+		margin-top: 18px;
+		padding: clamp(26px, 4vw, 36px);
+		display: grid;
+		grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+		gap: 24px;
+		align-items: center;
+	}
+
+	.award-kicker {
+		color: var(--kosscch-blue);
+		font-size: 16px;
+		font-weight: 900;
+	}
+
+	.award-panel h3 {
+		margin-top: 10px;
 		color: #ffffff;
+		font-size: clamp(30px, 4vw, 44px);
+		font-weight: 900;
+		line-height: 1.1;
+		word-break: keep-all;
 	}
 
-	@media (max-width: 768px) {
-		.award-header {
-			margin-bottom: 28px;
-			gap: 6px;
-		}
+	.award-panel ul {
+		margin: 0;
+		padding-left: 22px;
+		display: grid;
+		gap: 12px;
+		color: rgba(255, 255, 255, 0.9);
+		font-size: clamp(17px, 2vw, 22px);
+		font-weight: 800;
+		line-height: 1.5;
+	}
 
-		.award-title {
-			font-size: 32px;
-		}
+	.note {
+		margin-top: 24px;
+		color: rgba(235, 245, 255, 0.78);
+		font-size: 16px;
+		font-weight: 600;
+		text-align: center;
+	}
 
-		.award-subtitle {
-			font-size: 15px;
+	@media (max-width: 820px) {
+		.criteria-grid,
+		.award-panel {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.criteria-head {
+			align-items: flex-start;
+			flex-direction: column;
 		}
 	}
 </style>

@@ -1,272 +1,171 @@
 ---
 import SectionLayout from "./SectionLayout.astro";
 
-interface Props {
-	tagline?: string;
-	sectionId?: string;
-	sectionName?: string;
-	pretitle?: string;
-	titleLine?: string;
-	subtitle?: string;
-	sectionClass?: string;
-}
-
-const {
-	sectionId = "competition",
-	sectionName = "competition",
-	sectionClass = "",
-} = Astro.props;
+const schedule = [
+	{
+		label: "모집 및 참가 신청 접수",
+		date: "2026.09.01 (화) ~ 09.11 (금)",
+		datetime: "2026-09-01",
+	},
+	{
+		label: "참가자 발표",
+		date: "2026.09.14 (월)",
+		datetime: "2026-09-14",
+	},
+	{
+		label: "대회 시작",
+		date: "2026.09.19 (토) 13:00 ~",
+		datetime: "2026-09-19T13:00",
+	},
+	{
+		label: "최종 발표 및 시상",
+		date: "2026.09.20 (일) 12:00",
+		datetime: "2026-09-20T12:00",
+	},
+	{
+		label: "폐회식",
+		date: "2026.09.20 (일) 15:00 ~",
+		datetime: "2026-09-20T15:00",
+	},
+];
 ---
 
-<SectionLayout
-	sectionId={sectionId}
-	sectionName={sectionName}
-	sectionClass={`competition-info ${sectionClass}`.trim()}
->
-	<div class="competition-content">
-		<h2 class="section-title">대회일정</h2>
-		<p class="section-subtitle">주요 일정</p>
+<SectionLayout sectionId="schedule" sectionName="schedule" sectionClass="competition-plan">
+	<div class="schedule-content">
+		<p class="eyebrow">Schedule</p>
+		<h2>대회 일정</h2>
 
-	<div style="width:680px; height:277px; background:#004F9F33; border-radius:16px; position:relative; overflow:hidden;">
-		<div style="
-			position:absolute;
-			left:42px;
-			top:45px;
-			width:596px;
-			height:188px;
-			display:grid;
-			grid-template-columns:172px 104px 173px 147px;
-			grid-template-rows:62px 62px 64px;
-			color:#fff;
-			font-size:16px;
-			font-weight:700;
-			line-height:1.45;
-			text-align:center;
-		">
-			<div style="display:flex; background-color:#004F9F33; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			6.1(월)~6.26(월)
-			</div>
-			<div style="display:flex; background-color:#004F9F33; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			7.5(월)
-			</div>
-			<div style="display:flex; background-color:#004F9F33; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			7.6(월)~8.9(월)
-			</div>
-			<div style="display:flex; background-color:#004F9F33; align-items:center; justify-content:center; border-bottom:1px solid rgba(255,255,255,0.65);">
-			9.5(토)
-			</div>
+		<ol class="timeline">
+			{schedule.map((item, index) => (
+				<li>
+					<span class="number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+					<div class="timeline-copy">
+						<h3>{item.label}</h3>
+						<time datetime={item.datetime}>{item.date}</time>
+					</div>
+				</li>
+			))}
+		</ol>
 
-			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			참가 접수
-			</div>
-			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			예선 심사<br>및 발표
-			</div>
-			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65); border-bottom:1px solid rgba(255,255,255,0.65);">
-			개발
-			</div>
-			<div style="display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(255,255,255,0.65);">
-			본선 및 시상
-			</div>
-
-			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65);">
-			기획안 및 개발 로드맵<br>보고서 제출
-			</div>
-			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65);">
-			20개팀 선발
-			</div>
-			<div style="display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.65);">
-			팀별 프로젝트 구현<br>및 멘토링 진행
-			</div>
-			<div style="display:flex; align-items:center; justify-content:center;">
-			발표 심사,<br>전시 및 시상
-			</div>
-		</div>
+		<p class="note">※ 세부일정은 참가팀 수 및 현장 상황에 따라 조정될 수 있습니다.</p>
 	</div>
-		<p class="caption">* 상기 일정은 사정에 따라 변경될 수 있습니다.</p>
-
-		<div class="final-section">
-			<h2 class="final-title">본선 일정</h2>
-
-			<div class="final-list">
-				<div class="final-row">
-					<div class="final-label">본선 일시</div>
-					<div class="final-value">2026.9.5(토)</div>
-				</div>
-
-				<div class="final-row">
-					<div class="final-label">본선 장소</div>
-					<div class="final-value">국민대학교 콘서트홀</div>
-				</div>
-			</div>
-
-			<p class="caption caption--final">* 본선 세부 일정은 본선 진출 팀들에 한해 추후 공지될 예정입니다.</p>
-		</div>
-	</div>
-
-
-
-
-	
-    <slot />
 </SectionLayout>
 
-
-
-
 <style>
-	.competition-content {
-		width: min(100%, 920px);
+	.schedule-content {
+		width: min(100%, 940px);
 		margin: 0 auto;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
+		color: #ffffff;
 	}
 
-	.section-title {
+	.eyebrow,
+	h2,
+	h3,
+	.note {
 		margin: 0;
-		color: #ffffff;
-		font-size: 48px;
-		font-weight: 800;
-		line-height: 1.1;
-		letter-spacing: -0.04em;
 	}
 
-	.section-subtitle {
-		margin: 14px 0 18px;
-		color: rgba(255, 255, 255, 0.92);
-		font-size: 28px;
-		font-weight: 700;
-		line-height: 1.2;
-	}
-
-	.caption {
-		margin: 12px 0 0;
-		color: rgba(255, 255, 255, 0.62);
-		font-size: 13px;
-		line-height: 1.5;
-		text-align: left;
-		width: min(100%, 560px);
-	}
-
-	.final-section {
-		margin-top: 40px;
-		width: min(100%, 560px);
+	.eyebrow {
+		color: var(--kosscch-blue);
+		font-size: 15px;
+		font-weight: 900;
+		letter-spacing: 0.14em;
 		text-align: center;
+		text-transform: uppercase;
 	}
 
-	.final-title {
-		margin: 0;
-		color: #ffffff;
-		font-size: 28px;
-		font-weight: 800;
-		line-height: 1.2;
-	}
-
-	.final-list {
-		margin-top: 22px;
-		display: flex;
-		flex-direction: column;
-		gap: 16px;
-	}
-
-	.final-row {
-		display: grid;
-		grid-template-columns: 112px minmax(0, 1fr);
-		gap: 18px;
-		align-items: center;
-	}
-
-	.final-label {
-		color: #ffffff;
-		font-size: 20px;
-		font-weight: 800;
-		line-height: 1.2;
-		text-align: center;
-	}
-
-	.final-value {
-		color: #ffffff;
-		font-size: 20px;
-		font-weight: 500;
-		line-height: 1.2;
-		text-align: center;
-	}
-
-	.caption--final {
-		width: 100%;
-		margin-top: 16px;
-		text-align: left;
-	}
-
-	.pretitle,
-	.title-line,
-	.subtitle {
-		margin: 0;
-		font-family: Inter, system-ui, sans-serif;
-	}
-
-	.pretitle {
-		font-size: 25px;
-		font-weight: 800;
-		line-height: 1.2;
-		color: #ffffff;
-	}
-
-	.title-line {
-		font-size: clamp(56px, 7vw, 70px);
-		font-weight: 600;
-		line-height: 1.1;
-		color: #1566e8;
-	}
-
-	.subtitle {
-		font-size: clamp(60px, 8vw, 85px);
-		font-weight: 800;
+	h2 {
+		margin-top: 12px;
+		font-size: clamp(38px, 6vw, 68px);
+		font-weight: 900;
 		line-height: 1.05;
+		text-align: center;
+	}
+
+	.timeline {
+		margin: 48px 0 0;
+		padding: 0;
+		display: grid;
+		gap: 14px;
+		list-style: none;
+	}
+
+	.timeline li {
+		padding: 22px clamp(20px, 4vw, 34px);
+		display: grid;
+		grid-template-columns: 78px minmax(0, 1fr);
+		gap: 24px;
+		align-items: center;
+		border: 1px solid rgba(101, 168, 255, 0.28);
+		border-radius: 22px;
+		background: rgba(3, 12, 31, 0.74);
+	}
+
+	.number {
+		width: 58px;
+		aspect-ratio: 1;
+		display: inline-grid;
+		place-items: center;
+		border-radius: 16px;
+		background: linear-gradient(135deg, rgba(0, 112, 217, 0.86), rgba(3, 12, 31, 0.92));
 		color: #ffffff;
+		font-size: 20px;
+		font-weight: 900;
+		box-shadow: 0 0 22px rgba(56, 213, 255, 0.32);
+	}
+
+	.timeline-copy {
+		display: flex;
+		gap: 24px;
+		align-items: baseline;
+		justify-content: space-between;
+	}
+
+	h3 {
+		color: rgba(255, 255, 255, 0.9);
+		font-size: clamp(17px, 2.2vw, 22px);
+		font-weight: 800;
+		line-height: 1.35;
+	}
+
+	time {
+		color: #ffffff;
+		font-size: clamp(18px, 2.5vw, 26px);
+		font-weight: 900;
+		line-height: 1.3;
+		text-align: right;
+	}
+
+	.note {
+		margin-top: 28px;
+		color: rgba(235, 245, 255, 0.78);
+		font-size: 16px;
+		font-weight: 600;
+		text-align: center;
 	}
 
 	@media (max-width: 720px) {
-		.competition-content {
-			width: 100%;
+		.timeline {
+			margin-top: 34px;
 		}
 
-		.section-title {
-			font-size: 34px;
-		}
-
-		.section-subtitle {
-			font-size: 16px;
-			margin-top: 12px;
-		}
-
-		.caption {
-			width: 100%;
-			font-size: 12px;
-		}
-
-		.final-section {
-			width: 100%;
-			margin-top: 40px;
-		}
-
-		.final-title {
-			font-size: 24px;
-		}
-
-		.final-row {
+		.timeline li {
 			grid-template-columns: 1fr;
+			gap: 14px;
+			text-align: center;
+		}
+
+		.number {
+			margin: 0 auto;
+		}
+
+		.timeline-copy {
+			flex-direction: column;
 			gap: 6px;
+			align-items: center;
 		}
 
-		.final-label,
-		.final-value {
-			font-size: 16px;
-		}
-
-		.caption--final {
+		time {
 			text-align: center;
 		}
 	}
