@@ -7,7 +7,7 @@ const createHomePageController = () => {
     return () => {};
   }
 
-  const ANIMATION_LOCK_MS = 750;
+  const ANIMATION_LOCK_MS = 1500;
   const ACTIVE_SECTION_THRESHOLD = 0.6;
   const snapMediaQuery = window.matchMedia("(min-width: 901px) and (pointer: fine)");
 
