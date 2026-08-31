@@ -1,6 +1,9 @@
 ---
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 const faviconHref = `${basePath}/favicon.png`;
+const siteTitle = "KOSSCCHTHON 2026 연합 경진대회";
+const siteDescription = "국민대, 숭실대, 순천향대가 함께하는 KOSSCCHTHON 2026 연합 경진대회 안내 페이지";
+const ogImageUrl = new URL(`${basePath}/og-image.png`, Astro.site);
 ---
 
 <!doctype html>
@@ -12,9 +15,20 @@ const faviconHref = `${basePath}/favicon.png`;
 		<meta name="generator" content={Astro.generator} />
 		<meta
 			name="description"
-			content="국민대, 숭실대, 순천향대가 함께하는 KOSSCCHTHON 2026 연합 경진대회 안내 페이지"
+			content={siteDescription}
 		/>
-		<title>KOSSCCHTHON 2026 연합 경진대회</title>
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={siteDescription} />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="KOSSCCHTHON 2026 연합 경진대회" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={siteTitle} />
+		<meta name="twitter:description" content={siteDescription} />
+		<meta name="twitter:image" content={ogImageUrl} />
+		<title>{siteTitle}</title>
 	</head>
 	<body>
 		<slot />
