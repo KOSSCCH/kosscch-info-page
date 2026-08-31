@@ -145,16 +145,18 @@ const infoRows = [
 	}
 
 	.info-list {
-		margin: 0;
+		width: fit-content;
+		margin: 0 auto;
 		display: grid;
 		gap: 12px;
 	}
 
 	.info-row {
 		display: grid;
-		grid-template-columns: 112px minmax(0, 1fr);
+		grid-template-columns: 112px max-content;
 		gap: 16px;
 		align-items: baseline;
+		text-align: left;
 	}
 
 	.info-label,
@@ -206,6 +208,10 @@ const infoRows = [
 
 		.hero-copy {
 			text-align: center;
+		}
+
+		.info-list {
+			width: 100%;
 		}
 
 		.info-row {
