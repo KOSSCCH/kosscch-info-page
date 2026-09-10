@@ -67,7 +67,7 @@
 
 ## Content voice
 - Tone: clear, direct, polished Korean event 안내
-- Terminology: KOSSCCHTHON, 2026 연합 경진대회, 무박 2일 현장 해커톤, KIRO 크레딧
+- Terminology: KOSSCCHTHON, 2026 연합 경진대회, 무박 2일 현장 해커톤, API
 - Microcopy rules: do not invent links; use the verified organizer-provided registration destination
 
 ## Implementation constraints
