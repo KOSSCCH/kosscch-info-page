@@ -221,4 +221,54 @@ const infoRows = [
 			text-align: center;
 		}
 	}
+
+	@media (min-width: 901px) and (pointer: fine) and (max-height: 900px) {
+		.eyebrow {
+			margin-bottom: 10px;
+			font-size: 14px;
+		}
+
+		.title-line {
+			font-size: clamp(52px, 9.5vh, 92px);
+		}
+
+		.subtitle {
+			margin-top: 10px;
+			font-size: clamp(30px, 5.5vh, 52px);
+		}
+
+		.pretitle {
+			margin-top: 12px;
+			font-size: clamp(17px, 2.6vh, 24px);
+		}
+
+		.hero-card {
+			margin-top: 22px;
+			padding: clamp(18px, 2.5vh, 24px);
+			border-radius: 22px;
+		}
+
+		.hero-note {
+			margin-bottom: 14px;
+			font-size: clamp(15px, 2.2vh, 18px);
+			line-height: 1.5;
+		}
+
+		.info-list {
+			gap: 7px;
+		}
+
+		.info-value {
+			font-size: clamp(16px, 2.3vh, 19px);
+		}
+
+		.university-list {
+			margin-top: 14px;
+		}
+
+		.university-list span {
+			padding: 7px 12px;
+			font-size: 14px;
+		}
+	}
 </style>

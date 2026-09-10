@@ -52,6 +52,13 @@ const {
     overflow: hidden;
   }
 
+  @media (min-width: 901px) and (pointer: fine) {
+    .panel {
+      height: 100svh;
+      padding-block: clamp(28px, 5svh, 56px);
+    }
+  }
+
   .panel::before {
     content: "";
     position: absolute;
