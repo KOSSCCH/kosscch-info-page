@@ -1,46 +1,49 @@
-# Astro Starter Kit: Basics
+# KOSSCCHTHON 2026
+
+국민대학교, 숭실대학교, 순천향대학교 학생들이 함께하는 무박 2일 AI 기반 서비스 개발 경진대회입니다.
+
+[공식 홈페이지](https://KOSSCCH.github.io/kosscch-info-page/) · [참가 신청](https://forms.gle/LwN3c4tjxFrGto7A6) · [인스타그램](https://www.instagram.com/kosscchthon/)
+
+## 대회 안내
+
+| 항목 | 내용 |
+| --- | --- |
+| 대회 기간 | 2026.09.19 (토) ~ 09.20 (일) |
+| 대회 장소 | 국민대학교 미래관 4층 429호 자율주행스튜디오 |
+| 참가 대상 | 국민대학교·숭실대학교·순천향대학교 소속 대학생, 전공 무관, 휴학생 포함 |
+| 참가 인원 | 90명 |
+| 진행 방식 | 무박 2일 현장 해커톤 |
+| 모집 기간 | 2026.09.01 (화) ~ 09.11 (금) |
+| 참가자 발표 | 2026.09.14 (월) |
+
+참가 신청은 개인 단위로 받습니다. 신청자의 기술 스택과 개발 수준을 고려해 세 대학 참가자가 균형 있게 팀을 구성하며, 대회 주제는 당일 현장에서 공개됩니다. 참가자에게는 AI 개발을 위한 KIRO 크레딧을 제공합니다.
+
+## 심사 및 시상
+
+| 심사 항목 | 비중 | 기준 |
+| --- | ---: | --- |
+| 완성도 | 50% | 개발 목표 및 필수 기능의 완성도 높은 구현 |
+| 실용성 | 30% | 실생활에서의 도입 가능성 및 안정적인 데모 시연 |
+| 전달성 | 20% | 발표 전달력 및 프로젝트의 성장 가능성 |
+
+- 총상금: 1,500,000원
+- 대상 3팀, 각 500,000원
+- 각 대학 SW중심대학 사업단장 명의 상장 수여
+
+세부 일정과 심사·시상 일정은 진행 상황에 따라 변경될 수 있습니다.
+
+## 문의
+
+- 이메일: [kosscch3@gmail.com](mailto:kosscch3@gmail.com)
+- 인스타그램: [@kosscchthon](https://www.instagram.com/kosscchthon/)
+
+## 로컬 실행
+
+Node.js 22.12.0 이상이 필요합니다.
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+정적 빌드는 `npm run build`로 생성합니다.
