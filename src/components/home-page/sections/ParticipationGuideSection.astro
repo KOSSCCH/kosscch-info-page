@@ -4,7 +4,10 @@ import SectionLayout from "./SectionLayout.astro";
 const guide = [
 	{
 		label: "모집 기간",
-		value: "2026.09.01 (화) ~ 09.11 (금)",
+		values: [
+			"1차: 2026.09.01 (화) ~ 09.11 (금)",
+			"2차: 2026.09.12 (토) ~ 09.15 (화)",
+		],
 	},
 	{
 		label: "신청 방법",
@@ -45,6 +48,15 @@ const guide = [
 							>
 								{item.value}
 							</a>
+						) : item.values ? (
+							<span class="value-lines">
+								{item.values.map((value, index) => (
+									<>
+										{index > 0 && <br />}
+										{value}
+									</>
+								))}
+							</span>
 						) : item.value}
 					</dd>
 				</div>
@@ -115,6 +127,11 @@ const guide = [
 		border-radius: 22px;
 		background: rgba(3, 12, 31, 0.76);
 		box-shadow: 0 0 26px rgba(21, 102, 232, 0.22);
+	}
+
+	.value-lines {
+		display: block;
+		line-height: 1.6;
 	}
 
 	dt,
